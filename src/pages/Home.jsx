@@ -1,11 +1,12 @@
 import React from 'react';
-import { LanguageProvider } from '../components/gz/LanguageContext';
+import { LanguageProvider } from '../components/gz/LanguageContext.jsx';
 import TopBar from '../components/gz/TopBar';
 import NavBar from '../components/gz/NavBar';
 import HeroSection from '../components/gz/HeroSection';
 import PortfolioSection from '../components/gz/PortfolioSection';
 import PricingSection from '../components/gz/PricingSection';
 import Footer from '../components/gz/Footer';
+import VideoTypesSection from '../components/gz/VideoTypesSection';
 import SEOHead from '../components/gz/SEOHead';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <NavBar />
         <HeroSection />
         <PortfolioSection />
+        <VideoTypesSection />
         <PricingSection />
         <Footer />
       </div>
