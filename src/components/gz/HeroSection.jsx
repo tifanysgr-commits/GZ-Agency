@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageContext';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';
+import logoGZ from '../../assets/logoGZ.png';
 
 export default function HeroSection() {
   const { t } = useLanguage();
@@ -25,11 +26,9 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={parallaxRef}
-      className="relative overflow-visible"
+      className="relative overflow-x-hidden"
       style={{
         backgroundColor: '#EFEAE6',
-        // Shadow bridge: deep shadow projected downward, no clip
-        boxShadow: '0 20px 80px -10px rgba(12,44,71,0.18), 0 40px 120px -20px rgba(12,44,71,0.10)',
         zIndex: 2,
         position: 'relative',
       }}
@@ -93,6 +92,15 @@ export default function HeroSection() {
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-32 sm:pt-32 sm:pb-40 lg:pt-40 lg:pb-48 text-center">
+        {/* Logo — primera diapositiva */}
+        <div className="flex justify-center mb-8 sm:mb-10">
+          <img
+            src={logoGZ}
+            alt="GZ Agency"
+            className="h-28 sm:h-36 lg:h-44 xl:h-52 w-auto object-contain drop-shadow-lg"
+            style={{ maxWidth: 'min(520px, 90vw)' }}
+          />
+        </div>
         {/* Eyebrow */}
         <div
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-10 border"
@@ -108,20 +116,28 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* Main headline */}
+        {/* Main headline — 40px, Figtree, bold phrase */}
         <h1
-          className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight mb-6"
-          style={{ color: '#0C2C47' }}
+          className="leading-[1.15] tracking-tight mb-6"
+          style={{
+            color: '#0C2C47',
+            fontSize: '40px',
+            fontFamily: '"Figtree", sans-serif',
+          }}
         >
-          {t.hero.title}
+          {t.hero.titleBefore}
+          <strong className="font-bold">{t.hero.titleBold}</strong>
+          {t.hero.titleAfter}
         </h1>
 
-        {/* Subtitle */}
+        {/* Subtitle — resalta innovadora / innovative */}
         <p
           className="text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed"
           style={{ color: 'rgba(12,44,71,0.6)' }}
         >
-          {t.hero.subtitle}
+          {t.hero.subtitleBefore}
+          <strong className="font-bold" style={{ color: 'rgba(12,44,71,0.85)' }}>{t.hero.subtitleBold}</strong>
+          {t.hero.subtitleAfter}
         </p>
 
         {/* CTAs */}

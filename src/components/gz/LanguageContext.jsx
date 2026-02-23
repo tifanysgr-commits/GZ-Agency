@@ -6,9 +6,9 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const translations = {
   es: {
     topbar: {
-      phone: '+34 600 123 456',
+      phone: '+34 643 091 948',
       email: 'hello@gz.agency',
-      hours: 'Lun - Vie: 9:00 - 18:00',
+      hours: 'Lun - Vie: 00:00 - 24:00',
       portfolio: 'Portfolio',
       about: 'Sobre nosotros',
       contact: 'Contacto',
@@ -20,9 +20,15 @@ const translations = {
       cta: 'Hablemos',
     },
     hero: {
-      eyebrow: 'INDUSTRIAS A LAS QUE SERVIMOS',
-      title: 'Anuncios en video orientados a resultados para SaaS y marcas innovadoras',
-      subtitle: 'En Gz Agency, creamos campañas de video de calidad profesional a precios asequibles para ayudar a tu software a destacar y crecer.',
+      eyebrow: 'Publicidad profesional para nuevas webs y apps. Calidad alta. Precio inteligente.',
+      title: 'La agencia de motion que transforma tu software en una marca de autoridad antes de gastar tu primer dólar en Google Ads.',
+      titleBefore: 'La ',
+      titleBold: 'agencia de motion',
+      titleAfter: ' que transforma tu software en una marca de autoridad antes de gastar tu primer dólar en Google Ads.',
+      subtitle: 'En Gz Agency creamos la publicidad formal y estratégica que tu web o app innovadora necesita— porque profesional no significa absurdamente caro.',
+      subtitleBefore: 'En Gz Agency creamos la publicidad formal y estratégica que tu web o app ',
+      subtitleBold: 'innovadora',
+      subtitleAfter: ' necesita— porque profesional no significa absurdamente caro.',
       cta: 'Empezar ahora',
       secondary: 'Ver portfolio',
       trusted: 'Confiado por +50 startups y empresas SaaS',
@@ -90,9 +96,9 @@ const translations = {
   },
   en: {
     topbar: {
-      phone: '+34 600 123 456',
+      phone: '+34 643 091 948',
       email: 'hello@gz.agency',
-      hours: 'Mon - Fri: 9:00 - 18:00',
+      hours: 'Mon - Sun: 00:00 - 24:00',
       portfolio: 'Portfolio',
       about: 'About us',
       contact: 'Contact',
@@ -104,17 +110,23 @@ const translations = {
       cta: 'Get in touch',
     },
     hero: {
-      eyebrow: 'INDUSTRIES WE SERVE',
-      title: 'Results-driven video ads for SaaS & innovative brands',
-      subtitle: 'At Gz Agency, we create professional-quality video campaigns at affordable prices to help your software stand out and grow.',
-      cta: 'Get started',
+      eyebrow: 'Professional advertising for new apps and webs. High quality. Smart pricing.',
+      title: 'The motion agency that transforms your software into an authority brand before you spend your first dollar on Google Ads.',
+      titleBefore: 'The ',
+      titleBold: 'motion agency',
+      titleAfter: ' that transforms your software into an authority brand before you spend your first dollar on Google Ads.',
+      subtitle: 'At Gz Agency, we craft the formal, strategic advertising your innovative app or site needs -because professional shouldn\'t mean overpriced.',
+      subtitleBefore: 'At Gz Agency, we craft the formal, strategic advertising your ',
+      subtitleBold: 'innovative',
+      subtitleAfter: ' app or site needs— because professional shouldn\'t mean overpriced.',
+      cta: 'Book a meeting',
       secondary: 'View portfolio',
       trusted: 'Trusted by 50+ startups and SaaS companies',
     },
     portfolio: {
       eyebrow: 'OUR WORK',
       title: 'Project portfolio',
-      subtitle: 'Every video is designed to convert viewers into customers.',
+      subtitle: 'Every video is designed to convert viewers into Users.',
       contractBtn: 'Hire us',
       learnBtn: 'Learn more',
       fixedPrice: 'Fixed Price',
@@ -189,7 +201,7 @@ const LanguageContext = createContext({
 // ─────────────────────────────────────────────
 export const portfolioPackages = [
   {
-    videoURL: null, // Replace with your video URL or YouTube embed
+    videoURL: '/videos/ScreenRecording_02-23-2026%2020-35-44_1.mov',
     coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=700&fit=crop',
     titleEs: 'SaaS Launch Promo',
     titleEn: 'SaaS Launch Promo',
@@ -205,7 +217,7 @@ export const portfolioPackages = [
     duration: '0:45',
   },
   {
-    videoURL: null,
+    videoURL: '/videos/ScreenRecording_02-23-2026%2020-38-24_1.mov',
     coverImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=700&fit=crop',
     titleEs: 'App Promo — Mobile',
     titleEn: 'App Promo — Mobile',
@@ -221,7 +233,7 @@ export const portfolioPackages = [
     duration: '0:30',
   },
   {
-    videoURL: null,
+    videoURL: '/videos/ScreenRecording_02-23-2026%2020-40-02_1.mov',
     coverImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=1200&h=700&fit=crop',
     titleEs: 'Fintech Trust Ad',
     titleEn: 'Fintech Trust Ad',
@@ -237,7 +249,7 @@ export const portfolioPackages = [
     duration: '1:00',
   },
   {
-    videoURL: null,
+    videoURL: '/videos/ScreenRecording_02-23-2026%2020-40-56_1.mov',
     coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=700&fit=crop',
     titleEs: 'E-Commerce Hero',
     titleEn: 'E-Commerce Hero',

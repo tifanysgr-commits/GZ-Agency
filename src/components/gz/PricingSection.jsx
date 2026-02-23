@@ -7,12 +7,6 @@ export default function PricingSection() {
 
   return (
     <section id="pricing" className="py-24 sm:py-32 relative overflow-hidden" style={{ backgroundColor: '#EFEAE6' }}>
-      {/* Aqua accent band */}
-      <div
-        className="absolute top-0 left-0 right-0 h-1"
-        style={{ background: 'linear-gradient(to right, #97D3CD, #2D5652)' }}
-      />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#2D5652' }}>

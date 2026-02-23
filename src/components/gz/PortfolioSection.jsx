@@ -292,7 +292,7 @@ export default function PortfolioSection() {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1290px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
           <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#2D5652' }}>

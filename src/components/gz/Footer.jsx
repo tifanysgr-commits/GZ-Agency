@@ -7,9 +7,6 @@ export default function Footer() {
 
   return (
     <footer style={{ backgroundColor: '#0C2C47' }}>
-      {/* Top accent line */}
-      <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, #97D3CD, transparent)' }} />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10">
           {/* Brand */}

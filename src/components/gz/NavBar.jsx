@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { Menu, X } from 'lucide-react';
 
-const LOGO_URL = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ad01ace6c66924ebbe714/d1ed0ee5c_logoGZ.png';
-
 export default function NavBar() {
   const { lang, switchLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +21,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 transition-all duration-300"
+      className="sticky top-0 z-50 transition-all duration-300 overflow-x-hidden"
       style={{
         backgroundColor: scrolled ? 'rgba(239,234,230,0.95)' : 'rgba(239,234,230,0.88)',
         backdropFilter: 'blur(20px)',
@@ -34,15 +32,7 @@ export default function NavBar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-2.5">
-          {/* Logo — PNG image */}
-          <a href="#" className="flex items-center group">
-            <img
-              src={LOGO_URL}
-              alt="Gz Agency"
-              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-              style={{ maxWidth: '160px' }}
-            />
-          </a>
+          <div className="w-[88px] shrink-0" aria-hidden="true" />
 
           {/* Center links — desktop */}
           <div className="hidden md:flex items-center gap-8">
@@ -66,31 +56,30 @@ export default function NavBar() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            {/* Language Switcher — expanded hitbox, smooth transition */}
-            <div
-              className="hidden sm:flex items-center rounded-full cursor-pointer select-none"
+            {/* Language Switcher — click anywhere, slider transition */}
+            <button
+              type="button"
+              onClick={() => switchLang(lang === 'es' ? 'en' : 'es')}
+              className="hidden sm:flex relative items-center rounded-full cursor-pointer select-none w-[96px] h-10 p-1 outline-none focus:outline-none"
               style={{
                 border: '1.5px solid rgba(12,44,71,0.15)',
                 backgroundColor: 'rgba(12,44,71,0.04)',
-                padding: '3px',
               }}
             >
-              {['es', 'en'].map((l) => (
-                <button
-                  key={l}
-                  onClick={() => switchLang(l)}
-                  className="relative px-4 py-2 text-xs font-bold rounded-full outline-none focus:outline-none"
-                  style={{
-                    transition: 'background-color 0.4s ease-in-out, color 0.4s ease-in-out, opacity 0.4s ease-in-out',
-                    backgroundColor: lang === l ? '#0C2C47' : 'transparent',
-                    color: lang === l ? '#EFEAE6' : 'rgba(12,44,71,0.45)',
-                    minWidth: '42px',
-                  }}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
+              <span
+                className="absolute top-1/2 left-1 w-[46px] h-8 -translate-y-1/2 rounded-full transition-transform duration-300 ease-out"
+                style={{
+                  backgroundColor: '#0C2C47',
+                  transform: lang === 'es' ? 'translateX(0) translateY(-50%)' : 'translateX(46px) translateY(-50%)',
+                }}
+              />
+              <span className="relative z-10 w-1/2 flex justify-center text-xs font-bold" style={{ color: lang === 'es' ? '#EFEAE6' : 'rgba(12,44,71,0.45)' }}>
+                ES
+              </span>
+              <span className="relative z-10 w-1/2 flex justify-center text-xs font-bold" style={{ color: lang === 'en' ? '#EFEAE6' : 'rgba(12,44,71,0.45)' }}>
+                EN
+              </span>
+            </button>
 
             <a
               href="#pricing"
@@ -135,26 +124,29 @@ export default function NavBar() {
               ))}
             </div>
             <div className="flex items-center gap-3 mt-4 px-4">
-              <div
-                className="flex items-center rounded-full"
-                style={{ border: '1.5px solid rgba(12,44,71,0.15)', padding: '3px' }}
+              <button
+                type="button"
+                onClick={() => switchLang(lang === 'es' ? 'en' : 'es')}
+                className="flex relative items-center rounded-full w-[96px] h-10 p-1 cursor-pointer select-none outline-none focus:outline-none"
+                style={{
+                  border: '1.5px solid rgba(12,44,71,0.15)',
+                  backgroundColor: 'rgba(12,44,71,0.04)',
+                }}
               >
-                {['es', 'en'].map(l => (
-                  <button
-                    key={l}
-                    onClick={() => switchLang(l)}
-                    className="px-4 py-2 text-xs font-bold rounded-full"
-                    style={{
-                      transition: 'all 0.4s ease-in-out',
-                      backgroundColor: lang === l ? '#0C2C47' : 'transparent',
-                      color: lang === l ? '#EFEAE6' : 'rgba(12,44,71,0.45)',
-                      minWidth: '42px',
-                    }}
-                  >
-                    {l.toUpperCase()}
-                  </button>
-                ))}
-              </div>
+                <span
+                  className="absolute top-1/2 left-1 w-[46px] h-8 -translate-y-1/2 rounded-full transition-transform duration-300 ease-out"
+                  style={{
+                    backgroundColor: '#0C2C47',
+                    transform: lang === 'es' ? 'translateX(0) translateY(-50%)' : 'translateX(46px) translateY(-50%)',
+                  }}
+                />
+                <span className="relative z-10 w-1/2 flex justify-center text-xs font-bold" style={{ color: lang === 'es' ? '#EFEAE6' : 'rgba(12,44,71,0.45)' }}>
+                  ES
+                </span>
+                <span className="relative z-10 w-1/2 flex justify-center text-xs font-bold" style={{ color: lang === 'en' ? '#EFEAE6' : 'rgba(12,44,71,0.45)' }}>
+                  EN
+                </span>
+              </button>
               <a
                 href="#pricing"
                 onClick={() => setMobileOpen(false)}

@@ -11,7 +11,7 @@ import SEOHead from '../components/gz/SEOHead';
 export default function Home() {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-white antialiased">
+      <div className="min-h-screen bg-white antialiased overflow-x-hidden">
         <SEOHead />
         <TopBar />
         <NavBar />
