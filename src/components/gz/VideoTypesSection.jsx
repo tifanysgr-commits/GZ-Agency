@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from './LanguageContext';
+import { useLanguage } from './LanguageContext.jsx';
 import { Megaphone, PlayCircle, Users, Monitor, Share2, Rocket } from 'lucide-react';
 
 const iconMap = {
