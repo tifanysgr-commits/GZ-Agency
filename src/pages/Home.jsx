@@ -5,7 +5,7 @@ import NavBar from '../components/gz/NavBar';
 import HeroSection from '../components/gz/HeroSection';
 import PortfolioSection from '../components/gz/PortfolioSection';
 import PricingSection from '../components/gz/PricingSection';
-import VideoTypesSection from '../components/gz/VideoTypesSection';
+// import VideoTypesSection from '../components/gz/VideoTypesSection';
 import Footer from '../components/gz/Footer';
 import SEOHead from '../components/gz/SEOHead';
 
@@ -18,10 +18,11 @@ export default function Home() {
         <NavBar />
         <HeroSection />
         <PortfolioSection />
-        <VideoTypesSection />
+       {/* <VideoTypesSection /> */}  
         <PricingSection />
         <Footer />
       </div>
     </LanguageProvider>
   );
+  
 }
