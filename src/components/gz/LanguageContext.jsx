@@ -1,80 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const LanguageContext = createContext();
-
 // ─────────────────────────────────────────────
-// PORTFOLIO PACKAGES DATA
-// Edit this array to update portfolio content.
-// Each item: { videoURL, coverImage, titleEs, titleEn, categoryEs, categoryEn,
-//              descEs, descEn, featuresEs[], featuresEn[], price, duration }
+// TRANSLATIONS
 // ─────────────────────────────────────────────
-export const portfolioPackages = [
-  {
-    videoURL: null, // Replace with your video URL or YouTube embed
-    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=700&fit=crop',
-    titleEs: 'SaaS Launch Promo',
-    titleEn: 'SaaS Launch Promo',
-    categoryEs: 'Lanzamiento de Producto',
-    categoryEn: 'Product Launch',
-    descEs: 'Un anuncio de alto impacto diseñado para presentar tu software al mercado y generar tracción inmediata desde el primer día.',
-    descEn: 'A high-impact ad designed to introduce your software to the market and generate immediate traction from day one.',
-    featuresEs: ['Script original incluido', 'Locución profesional', 'Post-producción 4K', 'Entrega en 7 días', 'Formatos para Meta & Google'],
-    featuresEn: ['Original script included', 'Professional voiceover', '4K post-production', '7-day delivery', 'Formats for Meta & Google'],
-    price: '€497',
-    priceLabel: 'Precio Cerrado',
-    priceLabelEn: 'Fixed Price',
-    duration: '0:45',
-  },
-  {
-    videoURL: null,
-    coverImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=700&fit=crop',
-    titleEs: 'App Promo — Mobile',
-    titleEn: 'App Promo — Mobile',
-    categoryEs: 'Promoción de App',
-    categoryEn: 'App Promotion',
-    descEs: 'Video optimizado para mobile-first que muestra las funciones clave de tu app de forma visual, rápida y persuasiva.',
-    descEn: "Mobile-first optimized video showcasing your app's key features in a visual, fast, and persuasive way.",
-    featuresEs: ['Formato vertical 9:16', 'Animaciones UI nativas', 'Música con licencia', 'Subtítulos incluidos', 'Entrega en 5 días'],
-    featuresEn: ['Vertical 9:16 format', 'Native UI animations', 'Licensed music', 'Subtitles included', '5-day delivery'],
-    price: '€397',
-    priceLabel: 'Precio Cerrado',
-    priceLabelEn: 'Fixed Price',
-    duration: '0:30',
-  },
-  {
-    videoURL: null,
-    coverImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=1200&h=700&fit=crop',
-    titleEs: 'Fintech Trust Ad',
-    titleEn: 'Fintech Trust Ad',
-    categoryEs: 'Servicios Financieros',
-    categoryEn: 'Financial Services',
-    descEs: 'Campaña de video que refuerza la confianza y credibilidad de tu producto fintech, superando las barreras de conversión.',
-    descEn: 'Video campaign that reinforces the trust and credibility of your fintech product, overcoming conversion barriers.',
-    featuresEs: ['Storytelling emocional', 'Actor/actriz profesional', 'Color grading premium', 'Entrega en 10 días', 'Revisiones ilimitadas'],
-    featuresEn: ['Emotional storytelling', 'Professional actor/actress', 'Premium color grading', '10-day delivery', 'Unlimited revisions'],
-    price: '€697',
-    priceLabel: 'Precio Cerrado',
-    priceLabelEn: 'Fixed Price',
-    duration: '1:00',
-  },
-  {
-    videoURL: null,
-    coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=700&fit=crop',
-    titleEs: 'E-Commerce Hero',
-    titleEn: 'E-Commerce Hero',
-    categoryEs: 'Tienda Online',
-    categoryEn: 'Online Store',
-    descEs: 'Anuncio de producto que convierte browsers en compradores. Diseñado para reducir el CPA y maximizar el ROAS.',
-    descEn: 'Product ad that converts browsers into buyers. Designed to reduce CPA and maximize ROAS.',
-    featuresEs: ['Demo de producto', 'Testimonial integrado', 'CTA dinámico', 'A/B testing de creativos', 'Entrega en 7 días'],
-    featuresEn: ['Product demo', 'Integrated testimonial', 'Dynamic CTA', 'Creative A/B testing', '7-day delivery'],
-    price: '€497',
-    priceLabel: 'Precio Cerrado',
-    priceLabelEn: 'Fixed Price',
-    duration: '0:30',
-  },
-];
-
 const translations = {
   es: {
     topbar: {
@@ -245,6 +173,86 @@ const translations = {
     },
   },
 };
+
+const LanguageContext = createContext({
+  lang: 'es',
+  switchLang: () => {},
+  t: translations.es,
+  detected: false,
+});
+
+// ─────────────────────────────────────────────
+// PORTFOLIO PACKAGES DATA
+// Edit this array to update portfolio content.
+// Each item: { videoURL, coverImage, titleEs, titleEn, categoryEs, categoryEn,
+//              descEs, descEn, featuresEs[], featuresEn[], price, duration }
+// ─────────────────────────────────────────────
+export const portfolioPackages = [
+  {
+    videoURL: null, // Replace with your video URL or YouTube embed
+    coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=700&fit=crop',
+    titleEs: 'SaaS Launch Promo',
+    titleEn: 'SaaS Launch Promo',
+    categoryEs: 'Lanzamiento de Producto',
+    categoryEn: 'Product Launch',
+    descEs: 'Un anuncio de alto impacto diseñado para presentar tu software al mercado y generar tracción inmediata desde el primer día.',
+    descEn: 'A high-impact ad designed to introduce your software to the market and generate immediate traction from day one.',
+    featuresEs: ['Script original incluido', 'Locución profesional', 'Post-producción 4K', 'Entrega en 7 días', 'Formatos para Meta & Google'],
+    featuresEn: ['Original script included', 'Professional voiceover', '4K post-production', '7-day delivery', 'Formats for Meta & Google'],
+    price: '€497',
+    priceLabel: 'Precio Cerrado',
+    priceLabelEn: 'Fixed Price',
+    duration: '0:45',
+  },
+  {
+    videoURL: null,
+    coverImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=700&fit=crop',
+    titleEs: 'App Promo — Mobile',
+    titleEn: 'App Promo — Mobile',
+    categoryEs: 'Promoción de App',
+    categoryEn: 'App Promotion',
+    descEs: 'Video optimizado para mobile-first que muestra las funciones clave de tu app de forma visual, rápida y persuasiva.',
+    descEn: "Mobile-first optimized video showcasing your app's key features in a visual, fast, and persuasive way.",
+    featuresEs: ['Formato vertical 9:16', 'Animaciones UI nativas', 'Música con licencia', 'Subtítulos incluidos', 'Entrega en 5 días'],
+    featuresEn: ['Vertical 9:16 format', 'Native UI animations', 'Licensed music', 'Subtitles included', '5-day delivery'],
+    price: '€397',
+    priceLabel: 'Precio Cerrado',
+    priceLabelEn: 'Fixed Price',
+    duration: '0:30',
+  },
+  {
+    videoURL: null,
+    coverImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f2?w=1200&h=700&fit=crop',
+    titleEs: 'Fintech Trust Ad',
+    titleEn: 'Fintech Trust Ad',
+    categoryEs: 'Servicios Financieros',
+    categoryEn: 'Financial Services',
+    descEs: 'Campaña de video que refuerza la confianza y credibilidad de tu producto fintech, superando las barreras de conversión.',
+    descEn: 'Video campaign that reinforces the trust and credibility of your fintech product, overcoming conversion barriers.',
+    featuresEs: ['Storytelling emocional', 'Actor/actriz profesional', 'Color grading premium', 'Entrega en 10 días', 'Revisiones ilimitadas'],
+    featuresEn: ['Emotional storytelling', 'Professional actor/actress', 'Premium color grading', '10-day delivery', 'Unlimited revisions'],
+    price: '€697',
+    priceLabel: 'Precio Cerrado',
+    priceLabelEn: 'Fixed Price',
+    duration: '1:00',
+  },
+  {
+    videoURL: null,
+    coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=700&fit=crop',
+    titleEs: 'E-Commerce Hero',
+    titleEn: 'E-Commerce Hero',
+    categoryEs: 'Tienda Online',
+    categoryEn: 'Online Store',
+    descEs: 'Anuncio de producto que convierte browsers en compradores. Diseñado para reducir el CPA y maximizar el ROAS.',
+    descEn: 'Product ad that converts browsers into buyers. Designed to reduce CPA and maximize ROAS.',
+    featuresEs: ['Demo de producto', 'Testimonial integrado', 'CTA dinámico', 'A/B testing de creativos', 'Entrega en 7 días'],
+    featuresEn: ['Product demo', 'Integrated testimonial', 'Dynamic CTA', 'Creative A/B testing', '7-day delivery'],
+    price: '€497',
+    priceLabel: 'Precio Cerrado',
+    priceLabelEn: 'Fixed Price',
+    duration: '0:30',
+  },
+];
 
 export function LanguageProvider({ children }) {
   const [lang, setLang] = useState('es');
