@@ -3,6 +3,8 @@ import { useLanguage } from './LanguageContext';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import logoGZ from '../../assets/logoGZ.png';
 
+const GOOGLE_CALENDAR_BOOKING_URL = 'https://calendar.app.google/DeeZzudAuKoAVaRk8';
+
 export default function HeroSection() {
   const { t } = useLanguage();
   const parallaxRef = useRef(null);
@@ -141,37 +143,46 @@ export default function HeroSection() {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#pricing"
-            className="group inline-flex items-center gap-2.5 px-8 py-4 font-semibold rounded-full transition-all hover:shadow-xl active:scale-[0.98] text-base"
-            style={{
-              backgroundColor: '#2D5652',
-              color: '#E2A54D',
-              boxShadow: '0 4px 20px rgba(45,86,82,0.3)',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            {t.hero.cta}
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </a>
-          <a
-            href="#portfolio"
-            className="group inline-flex items-center gap-3 px-8 py-4 font-medium rounded-full border transition-all hover:shadow-md active:scale-[0.98] text-base"
-            style={{
-              backgroundColor: 'rgba(12,44,71,0.04)',
-              borderColor: 'rgba(12,44,71,0.15)',
-              color: '#0C2C47',
-            }}
-          >
-            <div
-              className="w-8 h-8 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: 'rgba(12,44,71,0.08)' }}
+        <div className="flex flex-col items-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={GOOGLE_CALENDAR_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2.5 px-10 py-5 font-semibold rounded-full text-base w-full sm:w-auto min-h-[56px] transition-all duration-200 hover:shadow-xl active:scale-[0.95]"
+              style={{
+                backgroundColor: '#2D5652',
+                color: '#E2A54D',
+                boxShadow: '0 4px 20px rgba(45,86,82,0.3)',
+              }}
             >
-              <Play className="w-3.5 h-3.5 ml-0.5" style={{ fill: '#0C2C47', color: '#0C2C47' }} />
-            </div>
-            {t.hero.secondary}
-          </a>
+              {t.hero.cta}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <a
+              href="#portfolio"
+              className="group inline-flex items-center gap-3 px-8 py-4 font-medium rounded-full border transition-all hover:shadow-md active:scale-[0.98] text-base"
+              style={{
+                backgroundColor: 'rgba(12,44,71,0.04)',
+                borderColor: 'rgba(12,44,71,0.15)',
+                color: '#0C2C47',
+              }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'rgba(12,44,71,0.08)' }}
+              >
+                <Play className="w-3.5 h-3.5 ml-0.5" style={{ fill: '#0C2C47', color: '#0C2C47' }} />
+              </div>
+              {t.hero.secondary}
+            </a>
+          </div>
+          <p className="mt-4 w-full max-w-xl mx-auto px-4 text-sm text-center" style={{ color: '#475569' }}>
+            {t.hero.ctaCaption}
+          </p>
+          <p className="mt-1 text-xs text-center" style={{ color: '#475569', opacity: 0.9 }}>
+            {t.hero.bookingHint}
+          </p>
         </div>
 
         {/* Trust row */}
