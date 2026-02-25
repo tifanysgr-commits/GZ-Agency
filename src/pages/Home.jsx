@@ -1,6 +1,5 @@
 import React from 'react';
 import { LanguageProvider } from '../components/gz/LanguageContext.jsx';
-import TopBar from '../components/gz/TopBar';
 import NavBar from '../components/gz/NavBar';
 import HeroSection from '../components/gz/HeroSection';
 import PortfolioSection from '../components/gz/PortfolioSection';
@@ -13,9 +12,12 @@ export default function Home() {
     <LanguageProvider>
       <div className="min-h-screen bg-white antialiased overflow-x-hidden">
         <SEOHead />
-        <TopBar />
-        <NavBar />
-        <HeroSection />
+        <div className="relative">
+          <HeroSection />
+          <div className="fixed inset-x-0 top-0 z-20">
+            <NavBar />
+          </div>
+        </div>
         <PortfolioSection />
         <PricingSection />
         <Footer />
