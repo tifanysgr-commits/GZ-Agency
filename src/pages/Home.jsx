@@ -2,6 +2,7 @@ import React from 'react';
 import { LanguageProvider } from '../components/gz/LanguageContext.jsx';
 import NavBar from '../components/gz/NavBar';
 import HeroSection from '../components/gz/HeroSection';
+import ComparisonSection from '../components/gz/ComparisonSection';
 import PortfolioSection from '../components/gz/PortfolioSection';
 import PricingSection from '../components/gz/PricingSection';
 import Footer from '../components/gz/Footer';
@@ -18,6 +19,7 @@ export default function Home() {
             <NavBar />
           </div>
         </div>
+        <ComparisonSection />
         <PortfolioSection />
         <PricingSection />
         <Footer />

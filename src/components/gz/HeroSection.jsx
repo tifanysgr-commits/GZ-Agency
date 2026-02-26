@@ -4,24 +4,23 @@ import { ArrowRight } from 'lucide-react';
 
 const GOOGLE_CALENDAR_BOOKING_URL = 'https://calendar.app.google/DeeZzudAuKoAVaRk8';
 
-// Logos para el carrusel — URLs públicas o SVG placeholder
+// Logos para el carrusel
 const TRUST_LOGOS = [
-  { name: 'Notion', src: 'https://logo.clearbit.com/notion.so', alt: 'Notion' },
-  { name: 'uitblingend', src: null, alt: 'uitblingend' }, // Text-based, no official logo
-  { name: 'Google', src: 'https://logo.clearbit.com/google.com', alt: 'Google' },
-  { name: 'Base 44', src: 'https://base44.com/logo_v2.svg', alt: 'Base 44' },
-  { name: 'Revolut', src: 'https://logo.clearbit.com/revolut.com', alt: 'Revolut' },
+  { name: 'Base 44', src: '/9tjNavYDwf1uvAmwMoCO5MMqLw.png', alt: 'Base 44', imgClassName: 'h-8 scale-[3.4] -translate-y-1' },
+  { name: 'Notion', src: '/PKZp5ymnuOb3P7svJeb3d6PQV8.png', alt: 'Notion', imgClassName: 'h-10' },
+  { name: 'Revolut', src: '/Revolut-logo-jpg-copia.png', alt: 'Revolut', imgClassName: 'h-8 scale-[2.2] -translate-y-5' },
+  { name: 'Google', src: '/w5ONtbohOour7QXxFtroCRd58U.png', alt: 'Google', imgClassName: 'h-7 -translate-y-0.5' },
 ];
 
 function LogoItem({ item }) {
   const [imgError, setImgError] = React.useState(false);
   if (item.src && !imgError) {
     return (
-      <div className="relative flex items-center justify-center h-10 min-w-[80px]">
+      <div className="relative flex items-center justify-center h-16 min-w-[180px]">
         <img
           src={item.src}
           alt={item.alt}
-          className="h-8 w-auto object-contain opacity-80 grayscale hover:opacity-100 hover:grayscale-0 transition-all"
+          className={`block w-auto object-contain origin-center ${item.imgClassName || 'h-10'}`}
           onError={() => setImgError(true)}
         />
       </div>
@@ -39,6 +38,15 @@ function LogoItem({ item }) {
 
 export default function HeroSection() {
   const { t } = useLanguage();
+  const [activeHeroSlide, setActiveHeroSlide] = React.useState(0);
+
+  React.useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveHeroSlide((prev) => (prev + 1) % 2);
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   return (
     <section
@@ -121,15 +129,60 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Placeholder derecha — gris #e0e0e0, borde azul oscuro */}
+          {/* Slider derecha — 2 diapositivas */}
           <div
-            className="hidden lg:block w-full lg:w-[32%] min-h-[280px] shrink-0 m-4 mr-6"
+            className="hidden lg:block w-full lg:w-[32%] min-h-[280px] shrink-0 m-4 mr-6 relative overflow-hidden"
             style={{
               backgroundColor: '#e0e0e0',
               border: '1px solid #142133',
               borderRadius: '16px',
             }}
-          />
+          >
+            <div
+              className="flex h-full w-[200%] transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${activeHeroSlide * 50}%)` }}
+            >
+              <div className="w-1/2 h-full p-4 bg-[#dde3ea]">
+                <div className="h-full w-full rounded-xl border border-[#8ea9c8] bg-white/70 p-4 flex flex-col justify-between">
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-[#142133]/70 mb-2">Vista previa</p>
+                    <h3 className="text-[#142133] text-lg leading-tight font-semibold">
+                      Estrategia creativa
+                    </h3>
+                    <p className="text-xs text-[#142133]/80 mt-2">
+                      Flujo de contenido, anuncios y automatizacion para lanzar rapido.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Anuncios</div>
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Landing</div>
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Tracking</div>
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Iteracion</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-1/2 h-full p-2 bg-[#e7ebf0]">
+                <img
+                  src="/hero-slide-2-comparativa.png"
+                  alt="Comparativa entre agencias tradicionales y GZ Agency"
+                  className="w-full h-full object-cover rounded-xl border border-[#8ea9c8]"
+                />
+              </div>
+            </div>
+
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
+              {[0, 1].map((dot) => (
+                <button
+                  key={dot}
+                  type="button"
+                  aria-label={`Ir a diapositiva ${dot + 1}`}
+                  onClick={() => setActiveHeroSlide(dot)}
+                  className={`h-2 rounded-full transition-all ${activeHeroSlide === dot ? 'w-6 bg-[#142133]' : 'w-2 bg-[#142133]/40'}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Trust bar + Logos carrusel */}
@@ -142,7 +195,7 @@ export default function HeroSection() {
           <div className="w-full overflow-hidden py-4">
             <div className="logos-track flex items-center gap-12 lg:gap-16">
               {[...TRUST_LOGOS, ...TRUST_LOGOS].map((item, i) => (
-                <div key={i} className="flex items-center justify-center shrink-0" style={{ minWidth: '100px' }}>
+                <div key={i} className="flex items-center justify-center shrink-0" style={{ minWidth: '180px' }}>
                   <LogoItem item={item} />
                 </div>
               ))}
