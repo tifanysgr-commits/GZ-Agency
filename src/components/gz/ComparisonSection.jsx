@@ -68,7 +68,7 @@ function PointItem({ title, body, positive }) {
 export default function ComparisonSection() {
   return (
     <section className="-mt-2 lg:-mt-4 pt-4 pb-16 lg:pt-6 lg:pb-24" style={{ backgroundColor: '#efeeec' }}>
-      <div className="mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '1040px' }}>
+      <div className="gz-mobile-shell mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '1040px' }}>
         <div className="text-center mb-4">
           <div className="inline-flex items-center gap-2 text-[#213743]">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#12323f]" />
@@ -76,7 +76,7 @@ export default function ComparisonSection() {
           </div>
         </div>
         <h2
-          className="text-center text-[#111827] leading-tight mb-10"
+          className="text-center text-[#111827] leading-tight mb-8 sm:mb-10"
           style={{
             fontFamily: '"Crimson Text", serif',
             fontWeight: 400,
@@ -96,8 +96,8 @@ export default function ComparisonSection() {
           }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div className="p-6 md:p-8">
-              <h3 className="text-[#1f2937] font-semibold mb-6 text-3xl">Agencias tradicionales</h3>
+            <div className="p-5 sm:p-6 md:p-8">
+              <h3 className="text-[#1f2937] font-semibold mb-5 sm:mb-6 text-[1.6rem] sm:text-3xl">Agencias tradicionales</h3>
               <ul>
                 {TRADITIONAL_POINTS.map((item) => (
                   <PointItem key={item.title} title={item.title} body={item.body} positive={false} />
@@ -105,8 +105,8 @@ export default function ComparisonSection() {
               </ul>
             </div>
 
-            <div className="rounded-[22px] bg-white p-6 md:p-8 border border-[#c8d4e3]">
-              <h3 className="text-[#1f2937] font-semibold mb-6 text-3xl">GZ Agency</h3>
+            <div className="rounded-[22px] bg-white p-5 sm:p-6 md:p-8 border border-[#c8d4e3]">
+              <h3 className="text-[#1f2937] font-semibold mb-5 sm:mb-6 text-[1.6rem] sm:text-3xl">GZ Agency</h3>
               <ul>
                 {GZ_POINTS.map((item) => (
                   <PointItem key={item.title} title={item.title} body={item.body} positive />

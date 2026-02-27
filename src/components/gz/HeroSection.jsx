@@ -54,7 +54,7 @@ export default function HeroSection() {
       className="relative overflow-x-hidden bg-white"
       style={{ zIndex: 2 }}
     >
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-28 lg:pb-28" style={{ maxWidth: '960px', width: '100%' }}>
+      <div className="gz-mobile-shell mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-28 lg:pb-28" style={{ maxWidth: '960px', width: '100%' }}>
         {/* Bloque principal — #142133, ancho fijo menor */}
         <div
           className="relative flex flex-col lg:flex-row overflow-hidden w-full"
@@ -66,7 +66,7 @@ export default function HeroSection() {
           }}
         >
           {/* Contenido izquierdo */}
-          <div className="flex-1 pt-5 pb-6 pl-5 pr-8 lg:pt-6 lg:pb-8 lg:pl-6 lg:pr-12 xl:pt-8 xl:pb-10 xl:pl-8 xl:pr-16 flex flex-col justify-center">
+          <div className="flex-1 pt-6 pb-6 pl-5 pr-6 sm:pr-8 lg:pt-6 lg:pb-8 lg:pl-6 lg:pr-12 xl:pt-8 xl:pb-10 xl:pl-8 xl:pr-16 flex flex-col justify-center">
             {/* Rating — imagen estrellas + calificación */}
             <div className="mb-2">
               <img
@@ -90,7 +90,7 @@ export default function HeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-base sm:text-lg text-white/90 mb-10 max-w-xl">
+            <p className="text-[0.98rem] sm:text-lg text-white/90 mb-8 sm:mb-10 max-w-xl">
               {t.hero.subtitleBefore}
               {t.hero.subtitleBold && <strong>{t.hero.subtitleBold}</strong>}
               <br />
@@ -104,11 +104,11 @@ export default function HeroSection() {
                   href={GOOGLE_CALENDAR_BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex w-fit shrink-0 items-stretch rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
+                  className="group inline-flex w-fit min-h-[44px] shrink-0 items-stretch rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
                   style={{
                     backgroundColor: 'white',
                     color: '#262626',
-                    height: '40px',
+                    height: '44px',
                   }}
                 >
                   <span className="flex items-center pl-5 pr-4 text-xs font-medium shrink-0">{t.hero.cta}</span>

@@ -87,3 +87,20 @@
     overflow-x: hidden;
   }
 }
+
+@media (max-width: 767px) {
+  .gz-mobile-shell {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #hero .relative.flex.flex-col.lg\:flex-row {
+    border-radius: 20px !important;
+    min-height: 0 !important;
+  }
+
+  #portfolio .rounded-2xl,
+  #portfolio .rounded-\[22px\] {
+    border-radius: 18px !important;
+  }
+}

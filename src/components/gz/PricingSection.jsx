@@ -22,7 +22,7 @@ export default function PricingSection() {
 
   return (
     <section id="pricing" className="py-20 sm:py-24" style={{ backgroundColor: '#EFEAE6' }}>
-      <div className="mx-auto max-w-[1080px] px-4 sm:px-6 lg:px-8">
+      <div className="gz-mobile-shell mx-auto max-w-[1080px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-8 lg:gap-10 items-start">
           <div className="max-w-[560px]">
             <div className="inline-flex items-center gap-2 mb-3 text-[#d7ece8]">
@@ -38,14 +38,14 @@ export default function PricingSection() {
 
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <input type="text" placeholder={labels.name} className="h-11 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
-                <input type="email" placeholder={labels.email} className="h-11 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
-                <input type="tel" placeholder={labels.phone} className="h-11 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
-                <input type="text" placeholder={labels.company} className="h-11 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
+                <input type="text" placeholder={labels.name} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
+                <input type="email" placeholder={labels.email} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
+                <input type="tel" placeholder={labels.phone} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
+                <input type="text" placeholder={labels.company} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
               </div>
 
               <div className="relative">
-                <select className="w-full h-11 rounded-md px-3 pr-10 text-sm text-[#f4f4f2] border border-white/10 appearance-none outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }}>
+                <select className="w-full h-12 rounded-md px-3 pr-10 text-sm text-[#f4f4f2] border border-white/10 appearance-none outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }}>
                   <option>{labels.help}</option>
                 </select>
                 <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60 pointer-events-none" />
@@ -59,7 +59,7 @@ export default function PricingSection() {
 
               <a
                 href={`mailto:hello@gz.agency?subject=${encodeURIComponent(t.services.cta)}`}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white border border-white/10"
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium text-white border border-white/10 min-h-[44px]"
                 style={{ backgroundColor: HERO_CONTAINER_COLOR }}
               >
                 {labels.cta}
@@ -70,7 +70,7 @@ export default function PricingSection() {
             </form>
           </div>
 
-          <div className="min-h-[420px] rounded-[22px] border border-[#d5d8db] bg-[#efefef]" />
+          <div className="min-h-[250px] sm:min-h-[420px] rounded-[22px] border border-[#d5d8db] bg-[#efefef]" />
         </div>
       </div>
     </section>
