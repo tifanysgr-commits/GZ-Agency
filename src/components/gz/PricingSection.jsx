@@ -1,63 +1,121 @@
 import React from 'react';
 import { useLanguage } from './LanguageContext';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { CheckCircle2, Star } from 'lucide-react';
 
 export default function PricingSection() {
   const { t } = useLanguage();
-  const HERO_CONTAINER_COLOR = '#142133';
-  const PORTFOLIO_CTA_COLOR = '#0f2e44';
+  const DARK_PANEL = '#07152a';
+  const FORM_BG = '#efefef';
 
   return (
-    <section id="pricing" className="py-20 sm:py-24" style={{ backgroundColor: '#EFEAE6' }}>
+    <section id="pricing" className="py-20 sm:py-24" style={{ backgroundColor: '#07152a' }}>
       <div className="gz-mobile-shell mx-auto max-w-[1080px] px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-8 lg:gap-10 items-start">
-          <div className="max-w-[560px]">
-            <div className="inline-flex items-center gap-2 mb-3 text-[#d7ece8]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#d7ece8]" />
-              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.08em]">{t.pricing.eyebrow}</span>
-            </div>
-            <h2
-              className="leading-[1.05] mb-6 whitespace-pre-line"
-              style={{ fontFamily: '"Crimson Text", serif', fontSize: 'clamp(2rem, 4vw, 3.6rem)', fontWeight: 400, color: HERO_CONTAINER_COLOR }}
-            >
-              {t.pricing.title}
+        <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:gap-10 items-start">
+          <div className="rounded-[18px] p-5 sm:p-7 lg:p-8" style={{ backgroundColor: DARK_PANEL }}>
+            <h2 className="text-[2rem] sm:text-[2.45rem] leading-[1.06] font-semibold mb-6 text-white">
+              {t.pricing.leftTitle}
             </h2>
 
+            <ul className="space-y-3 mb-7">
+              {t.pricing.points.map((point) => (
+                <li key={point} className="flex items-start gap-2.5 text-white/90 text-[1rem] sm:text-[1.08rem] leading-[1.55]">
+                  <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0 text-white/85" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="/book"
+              className="inline-flex items-center justify-center min-h-[46px] px-7 rounded-xl text-sm font-semibold text-[#10192b] shadow-[0_0_28px_rgba(246,191,53,0.45)]"
+              style={{ backgroundColor: '#f0c44f' }}
+            >
+              {t.pricing.strategyCta}
+            </a>
+
+            <div className="mt-8">
+              <div className="flex items-center gap-1 text-[#f0c44f] mb-4">
+                {Array.from({ length: 5 }).map((_, idx) => (
+                  <Star key={idx} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <p className="text-white/90 text-[0.98rem] sm:text-[1.02rem] leading-[1.6] max-w-[500px]">
+                {t.pricing.testimonial}
+              </p>
+              <div className="mt-4">
+                <p className="text-white font-semibold">{t.pricing.testimonialName}</p>
+                <p className="text-white/55 text-sm">{t.pricing.testimonialRole}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[12px] border border-[#d7d7d7] p-5 sm:p-7" style={{ backgroundColor: FORM_BG }}>
+            <h3 className="text-[#2b2b2b] text-[1.65rem] sm:text-[2rem] font-semibold mb-5">
+              {t.pricing.formTitle}
+            </h3>
+
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <input type="text" placeholder={t.pricing.name} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
-                <input type="email" placeholder={t.pricing.email} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
-                <input type="tel" placeholder={t.pricing.phone} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
-                <input type="text" placeholder={t.pricing.company} className="h-12 rounded-md px-3 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }} />
-              </div>
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.name}
+                <input type="text" placeholder={t.pricing.placeholders.name} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+              </label>
 
-              <div className="relative">
-                <select className="w-full h-12 rounded-md px-3 pr-10 text-sm text-[#f4f4f2] border border-white/10 appearance-none outline-none" style={{ backgroundColor: PORTFOLIO_CTA_COLOR }}>
-                  <option>{t.pricing.help}</option>
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.company}
+                <input type="text" placeholder={t.pricing.placeholders.company} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+              </label>
+
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.email}
+                <input type="email" placeholder={t.pricing.placeholders.email} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+              </label>
+
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.contact}
+                <input type="tel" placeholder={t.pricing.placeholders.contact} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+              </label>
+
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.brief}
+                <textarea placeholder={t.pricing.placeholders.brief} className="mt-1 w-full min-h-[92px] rounded-md px-3 py-2.5 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none resize-none" />
+              </label>
+
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.need}
+                <select className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none">
+                  {t.pricing.options.need.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/60 pointer-events-none" />
-              </div>
+              </label>
 
-              <textarea
-                placeholder={t.pricing.message}
-                className="w-full min-h-[118px] rounded-md px-3 py-2.5 text-sm text-[#f4f4f2] placeholder:text-[#f4f4f2]/80 border border-white/10 outline-none resize-none"
-                style={{ backgroundColor: PORTFOLIO_CTA_COLOR }}
-              />
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.budget}
+                <select className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none">
+                  {t.pricing.options.budget.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block text-[#252525] text-sm font-medium">
+                {t.pricing.labels.source}
+                <select className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none">
+                  {t.pricing.options.source.map((option) => (
+                    <option key={option}>{option}</option>
+                  ))}
+                </select>
+              </label>
 
               <a
-                href={`mailto:hello@gz.agency?subject=${encodeURIComponent(t.services.cta)}`}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium text-white border border-white/10 min-h-[44px]"
-                style={{ backgroundColor: HERO_CONTAINER_COLOR }}
+                href={`mailto:hello@gz.agency?subject=${encodeURIComponent(t.pricing.submitCta)}`}
+                className="mt-2 inline-flex w-full items-center justify-center min-h-[44px] rounded-[8px] px-4 text-sm font-semibold text-[#1f1f1f]"
+                style={{ backgroundColor: '#f0c44f' }}
               >
-                {t.pricing.cta}
-                <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#f2f0ea]">
-                  <ArrowRight className="w-3 h-3" style={{ color: HERO_CONTAINER_COLOR }} />
-                </span>
+                {t.pricing.submitCta}
               </a>
             </form>
           </div>
-
-          <div className="min-h-[250px] sm:min-h-[420px] rounded-[22px] border border-[#d5d8db] bg-[#efefef]" />
         </div>
       </div>
     </section>

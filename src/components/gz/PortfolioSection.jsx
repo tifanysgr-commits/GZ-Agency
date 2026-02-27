@@ -25,7 +25,6 @@ function PackageCard({ pkg, index, lang, t }) {
   const desc = lang === 'es' ? pkg.descEs : pkg.descEn;
   const features = lang === 'es' ? pkg.featuresEs : pkg.featuresEn;
   const priceLabel = lang === 'es' ? pkg.priceLabel : pkg.priceLabelEn;
-  const tapHint = t.portfolio.tapHint;
 
   const closeExpanded = ({ resetInlinePlayback = false, lockMobileAutoOpen = false } = {}) => {
     const expandedVideo = expandedVideoRef.current;
@@ -79,7 +78,8 @@ function PackageCard({ pkg, index, lang, t }) {
 
     const video = expandedVideoRef.current;
     video.currentTime = 0;
-    video.muted = false;
+    // On mobile, autoplay with sound may be blocked; start muted for instant playback.
+    video.muted = isMobileViewport();
     video.play().catch(() => {});
     setIsExpandedVisible(true);
 
@@ -103,7 +103,7 @@ function PackageCard({ pkg, index, lang, t }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         const ratio = entry.intersectionRatio;
-        const inFocusZone = ratio >= 0.62;
+        const inFocusZone = ratio >= 0.48;
 
         if (!inFocusZone) {
           // Se desbloquea cuando la card abandona la zona de foco.
@@ -118,7 +118,7 @@ function PackageCard({ pkg, index, lang, t }) {
         if (mobileAutoOpenLockedRef.current) return;
         if (!isExpanded) openExpanded();
       },
-      { threshold: [0, 0.35, 0.5, 0.62, 0.75] }
+      { threshold: [0, 0.25, 0.4, 0.48, 0.65, 0.8] }
     );
 
     observer.observe(cardRef.current);
@@ -250,9 +250,6 @@ function PackageCard({ pkg, index, lang, t }) {
           {muted ? <VolumeX className="w-2.5 h-2.5" /> : <Volume2 className="w-2.5 h-2.5" />}
           {muted ? t.portfolio.hoverHint : t.portfolio.live}
         </div>
-        <div className="absolute top-3 right-3 z-10 flex md:hidden items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold" style={{ backgroundColor: 'rgba(12,44,71,0.52)', backdropFilter: 'blur(8px)', color: '#EFEAE6', border: '1px solid rgba(239,234,230,0.15)' }}>
-          {tapHint}
-        </div>
         <div
           className="absolute bottom-3 right-3 z-10 flex items-center gap-1 text-[10px] font-medium"
           style={{ color: 'rgba(239,234,230,0.7)' }}
@@ -270,6 +267,7 @@ function PackageCard({ pkg, index, lang, t }) {
               src={pkg.videoURL}
               loop
               muted
+              preload="auto"
               playsInline
               autoPlay
               className="w-full h-full object-cover"
@@ -307,6 +305,7 @@ function PackageCard({ pkg, index, lang, t }) {
             <video
               ref={expandedVideoRef}
               src={pkg.videoURL}
+              preload="auto"
               playsInline
               className="w-full aspect-[16/9] max-h-[85vh] object-contain rounded-lg shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
               onEnded={handleExpandedEnded}

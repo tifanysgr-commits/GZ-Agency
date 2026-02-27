@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { pagesConfig } from './pages.config';
 import PageNotFound from './lib/PageNotFound';
+import Book from './pages/Book';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -30,6 +31,7 @@ function App() {
             }
           />
         ))}
+        <Route path="/book" element={<Book />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

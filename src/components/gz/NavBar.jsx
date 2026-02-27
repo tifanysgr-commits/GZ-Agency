@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
-const GOOGLE_CALENDAR_BOOKING_URL = 'https://calendar.app.google/DeeZzudAuKoAVaRk8';
-
 export default function NavBar() {
   const { lang, switchLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
@@ -59,9 +57,7 @@ export default function NavBar() {
           {/* Right side — CTA + Language */}
           <div className="flex items-center gap-4">
             <a
-              href={GOOGLE_CALENDAR_BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/book"
               className="hidden sm:inline-flex items-stretch rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
               style={{
                 backgroundColor: '#142133',
@@ -138,9 +134,7 @@ export default function NavBar() {
             </div>
             <div className="flex items-center gap-3 mt-4 px-4">
               <a
-                href={GOOGLE_CALENDAR_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/book"
                 onClick={() => setMobileOpen(false)}
                 className="flex-1 inline-flex items-stretch rounded-[9999px] overflow-hidden"
                 style={{

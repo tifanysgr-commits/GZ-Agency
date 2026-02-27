@@ -2,8 +2,6 @@ import React from 'react';
 import { useLanguage } from './LanguageContext';
 import { ArrowRight } from 'lucide-react';
 
-const GOOGLE_CALENDAR_BOOKING_URL = 'https://calendar.app.google/DeeZzudAuKoAVaRk8';
-
 // Logos para el carrusel
 const TRUST_LOGOS = [
   { name: 'Base 44', src: '/9tjNavYDwf1uvAmwMoCO5MMqLw.png', alt: 'Base 44', imgClassName: 'h-8 scale-[3.4] -translate-y-1' },
@@ -101,9 +99,7 @@ export default function HeroSection() {
             <div className="flex flex-col gap-1">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
                 <a
-                  href={GOOGLE_CALENDAR_BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/book"
                   className="group inline-flex w-fit min-h-[44px] shrink-0 items-stretch rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
                   style={{
                     backgroundColor: 'white',
