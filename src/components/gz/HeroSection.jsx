@@ -145,19 +145,19 @@ export default function HeroSection() {
               <div className="w-1/2 h-full p-4 bg-[#dde3ea]">
                 <div className="h-full w-full rounded-xl border border-[#8ea9c8] bg-white/70 p-4 flex flex-col justify-between">
                   <div>
-                    <p className="text-[11px] uppercase tracking-[0.12em] text-[#142133]/70 mb-2">Vista previa</p>
+                    <p className="text-[11px] uppercase tracking-[0.12em] text-[#142133]/70 mb-2">{t.hero.slider.preview}</p>
                     <h3 className="text-[#142133] text-lg leading-tight font-semibold">
-                      Estrategia creativa
+                      {t.hero.slider.title}
                     </h3>
                     <p className="text-xs text-[#142133]/80 mt-2">
-                      Flujo de contenido, anuncios y automatizacion para lanzar rapido.
+                      {t.hero.slider.desc}
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Anuncios</div>
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Landing</div>
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Tracking</div>
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">Iteracion</div>
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[0]}</div>
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[1]}</div>
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[2]}</div>
+                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[3]}</div>
                   </div>
                 </div>
               </div>

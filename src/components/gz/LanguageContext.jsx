@@ -40,6 +40,55 @@ const translations = {
       secondary: 'Mira lo que hacemos',
       trusted: 'Con la confianza de empresas de rápido crecimiento y en expansión',
       rating: 'Calificación 4.9/5',
+      slider: {
+        preview: 'Vista previa',
+        title: 'Estrategia creativa',
+        desc: 'Flujo de contenido, anuncios y automatización para lanzar rápido.',
+        tags: ['Anuncios', 'Landing', 'Tracking', 'Iteración'],
+      },
+    },
+    comparison: {
+      eyebrow: '¿Por qué elegirnos?',
+      titleLine1: 'Publicidad profesional. Calidad alta.',
+      titleLine2: 'Precio inteligente',
+      traditionalTitle: 'Agencias tradicionales',
+      gzTitle: 'GZ Agency',
+      traditionalPoints: [
+        {
+          title: 'Cero margen para la innovación',
+          body: 'Manuales antiguos y estructuras rígidas que impiden reaccionar rápido a las tendencias actuales.',
+        },
+        {
+          title: 'Barrera de entrada económica',
+          body: 'Sin un presupuesto masivo, simplemente no lanzas. No hay espacio para proyectos emergentes.',
+        },
+        {
+          title: 'Falta de apuesta por el talento',
+          body: 'Solo buscan lo seguro; si eres una marca nueva o atrevida, no apuestan.',
+        },
+        {
+          title: 'Procesos lentos y manuales',
+          body: 'Burocracia y tiempos de espera que matan la frescura del contenido moderno.',
+        },
+      ],
+      gzPoints: [
+        {
+          title: 'Innovación constante y curiosa',
+          body: 'Somos autodidactas y experimentadores: probamos lo último en algoritmos y formatos antes que nadie.',
+        },
+        {
+          title: 'Democratizamos el lanzamiento',
+          body: 'Gracias a nuestra automatización inteligente, reducimos costes operativos para ofrecer calidad premium accesible.',
+        },
+        {
+          title: 'Apostamos por el potencial',
+          body: 'Apostamos por ideas con futuro: si elegimos tu marca, sabemos cómo venderla.',
+        },
+        {
+          title: 'Marketing de ventas real',
+          body: 'Resultados medibles: menos teoría de agencia y más ventas que funcionan.',
+        },
+      ],
     },
     portfolio: {
       eyebrow: 'NUESTRO TRABAJO',
@@ -49,6 +98,21 @@ const translations = {
       learnBtn: 'Saber más',
       fixedPrice: 'Precio Cerrado',
       hoverHint: 'Hover para activar',
+      tapHint: 'Toca para abrir',
+      live: 'En vivo',
+      perVideo: '/ video',
+      expandedPlayback: 'reproducción ampliada',
+    },
+    pricing: {
+      eyebrow: 'Contáctenos',
+      title: 'Estaremos encantados\nde ofrecerle\nasesoramiento\npersonalizado.',
+      name: 'Nombre completo*',
+      email: 'Dirección de correo electrónico*',
+      phone: 'Número de teléfono*',
+      company: 'Nombre de empresa*',
+      help: '¿Cómo podemos ayudarle?*',
+      message: 'Su mensaje o pregunta*',
+      cta: 'Enviar consulta',
     },
     services: {
       eyebrow: 'SERVICIOS Y PRECIOS',
@@ -101,6 +165,48 @@ const translations = {
       terms: 'Términos y condiciones',
       tagline: 'Video marketing que convierte.',
     },
+    aboutPage: {
+      back: 'Volver',
+      heroTitle: 'De Usuarios a Creadores :',
+      quote: 'Lo hago porque es divertido, y disfruto haciéndolo.',
+      quoteRole: 'CEO y Fundadora de Gz Agency',
+      storyIntro: 'El motivo es muy simple: lo que nació por curiosidad y pasión hoy es una metodología probada:',
+      storyBullets: [
+        'Es el resultado de experimentar con lo que nosotros mismos consumiríamos: cortes rápidos, estética limpia y un mensaje directo.',
+        'No vendemos humo; vendemos métricas y contenido que atrapa.',
+      ],
+      storyBridge: 'Marketing de Ventas: Resultados, no teorías. Dominamos la post-producción dinámica porque cada frame cuenta. Sabemos qué convierte tras miles de pruebas. Nuestros tres pilares:',
+      pillars: [
+        'Sin rellenos: Vamos directo a la conversión con un lenguaje visual fresco que evita las distracciones innecesarias.',
+        'Eficiencia radical: Automatizamos procesos de edición para entregarte calidad premium en tiempo récord.',
+        'Cercanía: Sin costes inflados; una propuesta de valor de alta gama, pero totalmente asequible.',
+      ],
+      whyTitleTop: 'Por qué las marcas',
+      whyTitleBottom: 'confían en Gz Agency',
+      whyBody: {
+        bold1: 'Tu decisión es estratégica,',
+        text1: 'no solo visual. No buscas “videos bonitos” que mueran en el scroll; buscas un socio que hable el idioma de tu negocio.',
+        bold2: 'En Gz Agency,',
+        text2: 'la post-producción de alta gama es una herramienta psicológica: cada frame está diseñado para capturar la atención en 3 segundos y escoltar al usuario hacia la acción. Nos jugamos tu reputación y tus métricas en cada entrega, porque un contenido mediocre es un riesgo para tu marca. Nuestra metodología no termina al exportar, sino cuando movemos la aguja de tus resultados.',
+        bold3: 'No somos proveedores de contenido; somos los guardianes de tu impacto visual.',
+      },
+      cards: [
+        {
+          title: 'Implicación Creativa:',
+          body: 'No seguimos órdenes, nos adueñamos de tu visión. Pensamos fuera de la caja para plantearte soluciones visuales que ni siquiera habías imaginado.',
+        },
+        {
+          title: 'Proyectos de Alta Complejidad:',
+          body: 'Hacer que una marca de consumo sea atractiva es fácil. Nosotros sacamos pecho transformando sectores “áridos” (SaaS, Fintech, logística) en referentes visuales de alta gama. Nos motivan los sectores desafiantes.',
+        },
+        {
+          title: 'Especialización Visual:',
+          body: 'Hablamos tu mismo idioma: CTR, retención, MQLs y SQLs. El camino hacia la conversión es largo, pero nosotros lo hacemos más corto a través de la eficiencia radical.',
+        },
+      ],
+      bottomTitle: 'Un equipo que ha estado en tu piel',
+      bottomBody: 'Somos Usuarios convertidos en Creadores. Antes de ser agencia, estuvimos donde estás tú hoy. Entendemos los retos, la presión por los resultados y la necesidad de diferenciarte. Sabemos qué funciona porque lo hemos probado miles de veces.',
+    },
   },
   en: {
     topbar: {
@@ -138,6 +244,55 @@ const translations = {
       secondary: 'See what we do',
       trusted: 'Trusted by fast-growing and expanding companies',
       rating: 'Rating 4.9/5',
+      slider: {
+        preview: 'Preview',
+        title: 'Creative strategy',
+        desc: 'Content flow, ads, and automation to launch faster.',
+        tags: ['Ads', 'Landing', 'Tracking', 'Iteration'],
+      },
+    },
+    comparison: {
+      eyebrow: 'Why choose us?',
+      titleLine1: 'Professional advertising. High quality.',
+      titleLine2: 'Smart pricing',
+      traditionalTitle: 'Traditional agencies',
+      gzTitle: 'GZ Agency',
+      traditionalPoints: [
+        {
+          title: 'Zero room for innovation',
+          body: 'Outdated playbooks and rigid structures that prevent fast reactions to market trends.',
+        },
+        {
+          title: 'High economic entry barrier',
+          body: 'Without a massive budget, you simply do not launch. Emerging projects get left out.',
+        },
+        {
+          title: 'No bet on talent',
+          body: 'They only choose the safest path; if your brand is new or bold, they will not back it.',
+        },
+        {
+          title: 'Slow, manual processes',
+          body: 'Bureaucracy and delays that kill the freshness of modern content.',
+        },
+      ],
+      gzPoints: [
+        {
+          title: 'Constant, curious innovation',
+          body: 'We are builders and experimenters: testing the latest algorithms and formats before anyone else.',
+        },
+        {
+          title: 'Launches made accessible',
+          body: 'With smart automation, we reduce operating costs to deliver premium quality at a realistic price.',
+        },
+        {
+          title: 'We bet on potential',
+          body: 'We back high-potential ideas: if we choose your brand, we know how to sell it.',
+        },
+        {
+          title: 'Real sales marketing',
+          body: 'Measurable outcomes: less agency theory, more revenue that works.',
+        },
+      ],
     },
     portfolio: {
       eyebrow: 'OUR WORK',
@@ -147,6 +302,21 @@ const translations = {
       learnBtn: 'Learn more',
       fixedPrice: 'Fixed Price',
       hoverHint: 'Hover to activate',
+      tapHint: 'Tap to open',
+      live: 'Live',
+      perVideo: '/ video',
+      expandedPlayback: 'expanded playback',
+    },
+    pricing: {
+      eyebrow: 'Contact us',
+      title: 'We would be delighted\nto offer you\npersonalized\nadvice.',
+      name: 'Full name*',
+      email: 'Email address*',
+      phone: 'Phone number*',
+      company: 'Company name*',
+      help: 'How can we help?*',
+      message: 'Your message or question*',
+      cta: 'Send inquiry',
     },
     services: {
       eyebrow: 'SERVICES & PRICING',
@@ -198,6 +368,48 @@ const translations = {
       privacy: 'Privacy policy',
       terms: 'Terms & conditions',
       tagline: 'Video marketing that converts.',
+    },
+    aboutPage: {
+      back: 'Back',
+      heroTitle: 'From Users to Creators:',
+      quote: 'I do this because it is fun, and I love doing it.',
+      quoteRole: 'CEO and Founder of Gz Agency',
+      storyIntro: 'The reason is simple: what started as curiosity and passion is now a proven methodology:',
+      storyBullets: [
+        'It comes from testing what we would actually consume ourselves: fast cuts, clean aesthetics, and direct messaging.',
+        'We do not sell smoke; we sell metrics and content that captures attention.',
+      ],
+      storyBridge: 'Sales Marketing: results, not theory. We master dynamic post-production because every frame matters. We know what converts after thousands of tests. Our three pillars:',
+      pillars: [
+        'No filler: we go straight to conversion with fresh visual language that removes unnecessary distractions.',
+        'Radical efficiency: we automate editing workflows to deliver premium quality at record speed.',
+        'Closeness: no inflated costs; a high-end value proposition that remains accessible.',
+      ],
+      whyTitleTop: 'Why brands',
+      whyTitleBottom: 'trust Gz Agency',
+      whyBody: {
+        bold1: 'Your decision is strategic,',
+        text1: 'not only visual. You are not looking for “pretty videos” that die in the scroll; you need a partner who speaks your business language.',
+        bold2: 'At Gz Agency,',
+        text2: 'high-end post-production is a psychological tool: every frame is designed to capture attention in three seconds and guide the user toward action. We put your reputation and metrics on the line in every delivery, because mediocre content is a risk for your brand. Our methodology does not end when we export, but when we move your business needle.',
+        bold3: 'We are not content providers; we are guardians of your visual impact.',
+      },
+      cards: [
+        {
+          title: 'Creative Involvement:',
+          body: 'We do not just execute; we take ownership of your vision. We think beyond the obvious to propose visual solutions you had not imagined yet.',
+        },
+        {
+          title: 'High-Complexity Projects:',
+          body: 'Making a consumer brand attractive is easy. We thrive by transforming “dry” sectors (SaaS, Fintech, logistics) into high-end visual references.',
+        },
+        {
+          title: 'Visual Specialization:',
+          body: 'We speak your language: CTR, retention, MQLs, and SQLs. The road to conversion is long, and we shorten it through radical efficiency.',
+        },
+      ],
+      bottomTitle: 'A team that has been in your shoes',
+      bottomBody: 'We are Users turned Creators. Before becoming an agency, we were where you are today. We understand the challenges, the pressure for results, and the need to stand out. We know what works because we have tested it thousands of times.',
     },
   },
 };

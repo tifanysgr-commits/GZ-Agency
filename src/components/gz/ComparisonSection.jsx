@@ -1,42 +1,5 @@
 import React from 'react';
-
-const TRADITIONAL_POINTS = [
-  {
-    title: 'Cero margen para la innovacion',
-    body: 'Manuales antiguos y estructuras rigidas que impiden reaccionar rapido a las tendencias actuales.',
-  },
-  {
-    title: 'Barrera de entrada economica',
-    body: 'Sin un presupuesto masivo, simplemente no lanzas. No hay espacio para proyectos emergentes.',
-  },
-  {
-    title: 'Falta de apuesta por el talento',
-    body: 'Solo buscan lo seguro; si eres una marca nueva o atrevida, no apuestan.',
-  },
-  {
-    title: 'Procesos lentos y manuales',
-    body: 'Burocracia y tiempos de espera que matan la frescura del contenido moderno.',
-  },
-];
-
-const GZ_POINTS = [
-  {
-    title: 'Innovacion constante y curiosa',
-    body: 'Somos autodesarrolladores y didactas: experimentamos con lo ultimo en algoritmos y formatos antes que nadie.',
-  },
-  {
-    title: 'Democratizamos el lanzamiento',
-    body: 'Gracias a nuestra automatizacion inteligente, reducimos costos operativos para que a tu bolsillo llegue una carta de presentacion asequible.',
-  },
-  {
-    title: 'Apostamos por el potencial',
-    body: 'Apostamos por ideas: si usamos tu marca, sabemos como venderla.',
-  },
-  {
-    title: 'Marketing de ventas real',
-    body: 'Resultados reales: menos teoria de agencia y mas ventas que funcionan.',
-  },
-];
+import { useLanguage } from './LanguageContext';
 
 function PointItem({ title, body, positive }) {
   return (
@@ -66,13 +29,15 @@ function PointItem({ title, body, positive }) {
 }
 
 export default function ComparisonSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="-mt-2 lg:-mt-4 pt-4 pb-16 lg:pt-6 lg:pb-24" style={{ backgroundColor: '#efeeec' }}>
       <div className="gz-mobile-shell mx-auto px-4 sm:px-6 lg:px-8" style={{ maxWidth: '1040px' }}>
         <div className="text-center mb-4">
           <div className="inline-flex items-center gap-2 text-[#213743]">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#12323f]" />
-            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.08em]">¿Por qué elegirnos?</p>
+            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.08em]">{t.comparison.eyebrow}</p>
           </div>
         </div>
         <h2
@@ -83,9 +48,9 @@ export default function ComparisonSection() {
             fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
           }}
         >
-          Publicidad profesional. Calidad alta.
+          {t.comparison.titleLine1}
           <br />
-          Precio inteligente
+          {t.comparison.titleLine2}
         </h2>
 
         <div
@@ -97,18 +62,18 @@ export default function ComparisonSection() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div className="p-5 sm:p-6 md:p-8">
-              <h3 className="text-[#1f2937] font-semibold mb-5 sm:mb-6 text-[1.6rem] sm:text-3xl">Agencias tradicionales</h3>
+              <h3 className="text-[#1f2937] font-semibold mb-5 sm:mb-6 text-[1.6rem] sm:text-3xl">{t.comparison.traditionalTitle}</h3>
               <ul>
-                {TRADITIONAL_POINTS.map((item) => (
+                {t.comparison.traditionalPoints.map((item) => (
                   <PointItem key={item.title} title={item.title} body={item.body} positive={false} />
                 ))}
               </ul>
             </div>
 
             <div className="rounded-[22px] bg-white p-5 sm:p-6 md:p-8 border border-[#c8d4e3]">
-              <h3 className="text-[#1f2937] font-semibold mb-5 sm:mb-6 text-[1.6rem] sm:text-3xl">GZ Agency</h3>
+              <h3 className="text-[#1f2937] font-semibold mb-5 sm:mb-6 text-[1.6rem] sm:text-3xl">{t.comparison.gzTitle}</h3>
               <ul>
-                {GZ_POINTS.map((item) => (
+                {t.comparison.gzPoints.map((item) => (
                   <PointItem key={item.title} title={item.title} body={item.body} positive />
                 ))}
               </ul>

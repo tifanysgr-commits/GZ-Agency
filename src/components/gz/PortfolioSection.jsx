@@ -11,6 +11,7 @@ function PackageCard({ pkg, index, lang, t }) {
   const outsidePointerTravelRef = useRef(0);
   const prevPointerRef = useRef(null);
   const expandedOpenedAtRef = useRef(0);
+  const mobileAutoOpenLockedRef = useRef(false);
   const [muted, setMuted] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -24,9 +25,9 @@ function PackageCard({ pkg, index, lang, t }) {
   const desc = lang === 'es' ? pkg.descEs : pkg.descEn;
   const features = lang === 'es' ? pkg.featuresEs : pkg.featuresEn;
   const priceLabel = lang === 'es' ? pkg.priceLabel : pkg.priceLabelEn;
-  const tapHint = lang === 'es' ? 'Toca para abrir' : 'Tap to open';
+  const tapHint = t.portfolio.tapHint;
 
-  const closeExpanded = ({ resetInlinePlayback = false } = {}) => {
+  const closeExpanded = ({ resetInlinePlayback = false, lockMobileAutoOpen = false } = {}) => {
     const expandedVideo = expandedVideoRef.current;
     if (expandedVideo) {
       expandedVideo.pause();
@@ -52,6 +53,25 @@ function PackageCard({ pkg, index, lang, t }) {
       inlineVideoRef.current.pause();
     }
 
+    if (lockMobileAutoOpen && isMobileViewport()) {
+      mobileAutoOpenLockedRef.current = true;
+    }
+  };
+
+  const openExpanded = () => {
+    if (!pkg.videoURL || isExpanded) return;
+    if (expandedCloseTimerRef.current) window.clearTimeout(expandedCloseTimerRef.current);
+    expandedOpenedAtRef.current = Date.now();
+    outsidePointerTravelRef.current = 0;
+    prevPointerRef.current = null;
+    setIsActive(true);
+    setMuted(false);
+    setIsExpandedMounted(true);
+    setIsExpanded(true);
+    if (inlineVideoRef.current) {
+      inlineVideoRef.current.muted = true;
+      inlineVideoRef.current.pause();
+    }
   };
 
   useEffect(() => {
@@ -75,6 +95,35 @@ function PackageCard({ pkg, index, lang, t }) {
       document.body.style.overflow = prevOverflow;
     };
   }, [isExpandedVisible]);
+
+  useEffect(() => {
+    if (!isMobileViewport()) return undefined;
+    if (!cardRef.current || !pkg.videoURL) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const ratio = entry.intersectionRatio;
+        const inFocusZone = ratio >= 0.62;
+
+        if (!inFocusZone) {
+          // Se desbloquea cuando la card abandona la zona de foco.
+          mobileAutoOpenLockedRef.current = false;
+          if (!isExpanded) {
+            setIsActive(false);
+            setMuted(true);
+          }
+          return;
+        }
+
+        if (mobileAutoOpenLockedRef.current) return;
+        if (!isExpanded) openExpanded();
+      },
+      { threshold: [0, 0.35, 0.5, 0.62, 0.75] }
+    );
+
+    observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [isExpanded, pkg.videoURL]);
 
   useEffect(() => {
     if (!isExpanded) return undefined;
@@ -112,19 +161,19 @@ function PackageCard({ pkg, index, lang, t }) {
       if (!expandedVideo || expandedVideo.paused || expandedVideo.ended) return;
       // Ignora inercia de scroll justo al abrir para evitar cierres no intencionales.
       if (Date.now() - expandedOpenedAtRef.current < OPEN_GUARD_MS) return;
-      closeExpanded({ resetInlinePlayback: true });
+      closeExpanded({ resetInlinePlayback: true, lockMobileAutoOpen: true });
     };
     const onTouchMove = () => {
       const expandedVideo = expandedVideoRef.current;
       if (!expandedVideo || expandedVideo.paused || expandedVideo.ended) return;
       if (Date.now() - expandedOpenedAtRef.current < OPEN_GUARD_MS) return;
-      closeExpanded({ resetInlinePlayback: true });
+      closeExpanded({ resetInlinePlayback: true, lockMobileAutoOpen: true });
     };
     const onScroll = () => {
       const expandedVideo = expandedVideoRef.current;
       if (!expandedVideo || expandedVideo.paused || expandedVideo.ended) return;
       if (Date.now() - expandedOpenedAtRef.current < OPEN_GUARD_MS) return;
-      closeExpanded({ resetInlinePlayback: true });
+      closeExpanded({ resetInlinePlayback: true, lockMobileAutoOpen: true });
     };
 
     window.addEventListener('mousemove', onMouseMove);
@@ -148,19 +197,7 @@ function PackageCard({ pkg, index, lang, t }) {
 
   const handleMouseEnter = () => {
     if (isMobileViewport()) return;
-    if (isExpanded) return;
-    if (expandedCloseTimerRef.current) window.clearTimeout(expandedCloseTimerRef.current);
-    expandedOpenedAtRef.current = Date.now();
-    outsidePointerTravelRef.current = 0;
-    prevPointerRef.current = null;
-    setIsActive(true);
-    setMuted(false);
-    setIsExpandedMounted(true);
-    setIsExpanded(true);
-    if (inlineVideoRef.current) {
-      inlineVideoRef.current.muted = true;
-      inlineVideoRef.current.pause();
-    }
+    openExpanded();
   };
 
   const handleMouseLeave = () => {
@@ -177,19 +214,7 @@ function PackageCard({ pkg, index, lang, t }) {
 
   const handleVideoTap = () => {
     if (!isMobileViewport()) return;
-    if (!pkg.videoURL || isExpanded) return;
-    if (expandedCloseTimerRef.current) window.clearTimeout(expandedCloseTimerRef.current);
-    expandedOpenedAtRef.current = Date.now();
-    outsidePointerTravelRef.current = 0;
-    prevPointerRef.current = null;
-    setIsActive(true);
-    setMuted(false);
-    setIsExpandedMounted(true);
-    setIsExpanded(true);
-    if (inlineVideoRef.current) {
-      inlineVideoRef.current.muted = true;
-      inlineVideoRef.current.pause();
-    }
+    openExpanded();
   };
 
   return (
@@ -223,7 +248,7 @@ function PackageCard({ pkg, index, lang, t }) {
         </div>
         <div className="absolute top-3 right-3 z-10 hidden md:flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold" style={{ backgroundColor: 'rgba(12,44,71,0.52)', backdropFilter: 'blur(8px)', color: '#EFEAE6', border: '1px solid rgba(239,234,230,0.15)' }}>
           {muted ? <VolumeX className="w-2.5 h-2.5" /> : <Volume2 className="w-2.5 h-2.5" />}
-          {muted ? t.portfolio.hoverHint : 'Live'}
+          {muted ? t.portfolio.hoverHint : t.portfolio.live}
         </div>
         <div className="absolute top-3 right-3 z-10 flex md:hidden items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold" style={{ backgroundColor: 'rgba(12,44,71,0.52)', backdropFilter: 'blur(8px)', color: '#EFEAE6', border: '1px solid rgba(239,234,230,0.15)' }}>
           {tapHint}
@@ -273,7 +298,7 @@ function PackageCard({ pkg, index, lang, t }) {
         <div
           className={`fixed inset-0 z-[80] flex items-center justify-center px-4 transition-opacity duration-300 ${isExpandedVisible ? 'bg-black/45 opacity-100' : 'bg-black/0 opacity-0'}`}
           role="dialog"
-          aria-label={`${title} expanded playback`}
+          aria-label={`${title} ${t.portfolio.expandedPlayback}`}
         >
           <div
             ref={expandedViewportRef}
@@ -323,7 +348,7 @@ function PackageCard({ pkg, index, lang, t }) {
               <p className="text-[1.55rem] font-extrabold tracking-tight leading-none" style={{ color: '#1a3049' }}>{pkg.price}</p>
             </div>
             <div className="px-1.5 py-0.5 rounded-full text-[9px] font-bold" style={{ backgroundColor: '#2d4e54', color: '#f0d188' }}>
-              / video
+              {t.portfolio.perVideo}
             </div>
           </div>
           <div className="flex gap-2">
