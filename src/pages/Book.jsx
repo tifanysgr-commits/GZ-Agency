@@ -4,18 +4,46 @@ import { Clock3, Video, Globe } from 'lucide-react';
 import { useLanguage } from '../components/gz/LanguageContext';
 
 const GOOGLE_CALENDAR_BOOKING_URL = 'https://calendar.app.google/DeeZzudAuKoAVaRk8';
+const GOOGLE_CALENDAR_SCRIPT_URL = 'https://calendar.google.com/calendar/scheduling-button-script.js';
 
 export default function Book() {
   const { t } = useLanguage();
   const labels = t.booking;
-  const openBookingPopup = () => {
-    const width = 600;
-    const height = 700;
-    const left = Math.max(0, window.screenX + (window.outerWidth - width) / 2);
-    const top = Math.max(0, window.screenY + (window.outerHeight - height) / 2);
-    const features = `popup=yes,width=${width},height=${height},left=${Math.round(left)},top=${Math.round(top)},resizable=yes,scrollbars=yes`;
-    window.open(GOOGLE_CALENDAR_BOOKING_URL, 'gz_booking_popup', features);
-  };
+  const bookingButtonHostRef = React.useRef(null);
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    const renderOfficialButton = () => {
+      if (!isMounted || !bookingButtonHostRef.current || !window.calendar?.schedulingButton?.load) return;
+      bookingButtonHostRef.current.innerHTML = '';
+      window.calendar.schedulingButton.load({
+        url: GOOGLE_CALENDAR_BOOKING_URL,
+        color: '#2D5652',
+        label: labels.popupCta,
+        target: bookingButtonHostRef.current,
+      });
+    };
+
+    const existingScript = document.querySelector(`script[src="${GOOGLE_CALENDAR_SCRIPT_URL}"]`);
+    if (existingScript) {
+      if (window.calendar?.schedulingButton?.load) {
+        renderOfficialButton();
+      } else {
+        existingScript.addEventListener('load', renderOfficialButton, { once: true });
+      }
+    } else {
+      const script = document.createElement('script');
+      script.src = GOOGLE_CALENDAR_SCRIPT_URL;
+      script.async = true;
+      script.addEventListener('load', renderOfficialButton, { once: true });
+      document.body.appendChild(script);
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [labels.popupCta]);
 
   return (
     <main className="min-h-screen bg-[#07152a] text-white px-4 py-6 sm:py-8">
@@ -69,19 +97,35 @@ export default function Book() {
                 <p className="text-white/80 leading-[1.55] text-[0.98rem] sm:text-[1rem] mb-8">
                   {labels.popupDescription}
                 </p>
-                <button
-                  type="button"
-                  onClick={openBookingPopup}
-                  className="inline-flex min-h-[46px] items-center justify-center rounded-full px-8 text-sm font-semibold transition-all hover:brightness-110 active:scale-[0.98]"
-                  style={{ backgroundColor: '#2D5652', color: '#E2A54D' }}
-                >
-                  {labels.popupCta}
-                </button>
+                <div ref={bookingButtonHostRef} className="gz-official-booking-btn inline-flex" />
               </div>
             </div>
           </div>
         </section>
       </div>
+      <style>{`
+        .gz-official-booking-btn button,
+        .gz-official-booking-btn a {
+          min-height: 46px !important;
+          padding: 0 2rem !important;
+          border-radius: 9999px !important;
+          border: none !important;
+          background: #2D5652 !important;
+          color: #E2A54D !important;
+          font-weight: 600 !important;
+          font-size: 0.875rem !important;
+          box-shadow: none !important;
+          transition: filter .2s ease, transform .15s ease !important;
+        }
+        .gz-official-booking-btn button:hover,
+        .gz-official-booking-btn a:hover {
+          filter: brightness(1.08) !important;
+        }
+        .gz-official-booking-btn button:active,
+        .gz-official-booking-btn a:active {
+          transform: scale(0.98) !important;
+        }
+      `}</style>
     </main>
   );
 }

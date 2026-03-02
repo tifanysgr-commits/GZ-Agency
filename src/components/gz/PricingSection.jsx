@@ -6,6 +6,30 @@ export default function PricingSection() {
   const { t } = useLanguage();
   const DARK_PANEL = '#07152a';
   const FORM_BG = '#efefef';
+  const PROPOSAL_EMAIL = 'Gz.agencys@gmail.com';
+
+  const handleProposalSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    const fields = {
+      [t.pricing.labels.name]: formData.get('name')?.toString().trim() || '-',
+      [t.pricing.labels.company]: formData.get('company')?.toString().trim() || '-',
+      [t.pricing.labels.email]: formData.get('email')?.toString().trim() || '-',
+      [t.pricing.labels.contact]: formData.get('contact')?.toString().trim() || '-',
+      [t.pricing.labels.brief]: formData.get('brief')?.toString().trim() || '-',
+      [t.pricing.labels.need]: formData.get('need')?.toString().trim() || '-',
+      [t.pricing.labels.budget]: formData.get('budget')?.toString().trim() || '-',
+      [t.pricing.labels.source]: formData.get('source')?.toString().trim() || '-',
+    };
+
+    const subject = `${t.pricing.submitCta} - ${fields[t.pricing.labels.company]}`;
+    const body = Object.entries(fields)
+      .map(([label, value]) => `${label}: ${value}`)
+      .join('\n');
+
+    window.location.href = `mailto:${PROPOSAL_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <section id="pricing" className="py-20 sm:py-24" style={{ backgroundColor: '#07152a' }}>
@@ -54,35 +78,35 @@ export default function PricingSection() {
               {t.pricing.formTitle}
             </h3>
 
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-3" onSubmit={handleProposalSubmit}>
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.name}
-                <input type="text" placeholder={t.pricing.placeholders.name} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+                <input name="name" type="text" placeholder={t.pricing.placeholders.name} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" required />
               </label>
 
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.company}
-                <input type="text" placeholder={t.pricing.placeholders.company} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+                <input name="company" type="text" placeholder={t.pricing.placeholders.company} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" required />
               </label>
 
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.email}
-                <input type="email" placeholder={t.pricing.placeholders.email} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+                <input name="email" type="email" placeholder={t.pricing.placeholders.email} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" required />
               </label>
 
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.contact}
-                <input type="tel" placeholder={t.pricing.placeholders.contact} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" />
+                <input name="contact" type="tel" placeholder={t.pricing.placeholders.contact} className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" required />
               </label>
 
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.brief}
-                <textarea placeholder={t.pricing.placeholders.brief} className="mt-1 w-full min-h-[92px] rounded-md px-3 py-2.5 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none resize-none" />
+                <textarea name="brief" placeholder={t.pricing.placeholders.brief} className="mt-1 w-full min-h-[92px] rounded-md px-3 py-2.5 text-sm text-[#2b2b2b] placeholder:text-[#6c6c6c] border border-[#d9d9d9] bg-[#f4f4f4] outline-none resize-none" required />
               </label>
 
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.need}
-                <select className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none">
+                <select name="need" className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" required>
                   {t.pricing.options.need.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
@@ -91,7 +115,7 @@ export default function PricingSection() {
 
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.budget}
-                <select className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none">
+                <select name="budget" className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" required>
                   {t.pricing.options.budget.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
@@ -100,20 +124,20 @@ export default function PricingSection() {
 
               <label className="block text-[#252525] text-sm font-medium">
                 {t.pricing.labels.source}
-                <select className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none">
+                <select name="source" className="mt-1 w-full h-11 rounded-md px-3 text-sm text-[#2b2b2b] border border-[#d9d9d9] bg-[#f4f4f4] outline-none" required>
                   {t.pricing.options.source.map((option) => (
                     <option key={option}>{option}</option>
                   ))}
                 </select>
               </label>
 
-              <a
-                href={`mailto:hello@gz.agency?subject=${encodeURIComponent(t.pricing.submitCta)}`}
+              <button
+                type="submit"
                 className="mt-2 inline-flex w-full items-center justify-center min-h-[44px] rounded-[8px] px-4 text-sm font-semibold text-[#1f1f1f]"
                 style={{ backgroundColor: '#f0c44f' }}
               >
                 {t.pricing.submitCta}
-              </a>
+              </button>
             </form>
           </div>
         </div>

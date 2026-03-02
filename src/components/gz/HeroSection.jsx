@@ -5,10 +5,13 @@ import { ArrowRight } from 'lucide-react';
 // Logos para el carrusel
 const TRUST_LOGOS = [
   { name: 'Base 44', src: '/9tjNavYDwf1uvAmwMoCO5MMqLw.png', alt: 'Base 44', imgClassName: 'h-8 scale-[3.4] -translate-y-1' },
-  { name: 'Notion', src: '/PKZp5ymnuOb3P7svJeb3d6PQV8.png', alt: 'Notion', imgClassName: 'h-10' },
-  { name: 'Revolut', src: '/Revolut-logo-jpg-copia.png', alt: 'Revolut', imgClassName: 'h-8 scale-[2.2] -translate-y-5' },
+  { name: 'Notion', src: '/PKZp5ymnuOb3P7svJeb3d6PQV8.png', alt: 'Notion', imgClassName: 'h-12' },
+  { name: 'Revolut', src: '/Revolut-logo-jpg-copia.png', alt: 'Revolut', imgClassName: 'h-8 scale-[2.2] -translate-y-1' },
   { name: 'Google', src: '/w5ONtbohOour7QXxFtroCRd58U.png', alt: 'Google', imgClassName: 'h-7 -translate-y-0.5' },
 ];
+
+const HERO_FIRST_SLIDE_BG = encodeURI('/videos/Captura de pantalla 2026-03-02 a las 11.59.25.png');
+const HERO_FIRST_SLIDE_VIDEO = '/videos/Carrusel.mov';
 
 function LogoItem({ item }) {
   const [imgError, setImgError] = React.useState(false);
@@ -138,31 +141,29 @@ export default function HeroSection() {
               className="flex h-full w-[200%] transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${activeHeroSlide * 50}%)` }}
             >
-              <div className="w-1/2 h-full p-4 bg-[#dde3ea]">
-                <div className="h-full w-full rounded-xl border border-[#8ea9c8] bg-white/70 p-4 flex flex-col justify-between">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.12em] text-[#142133]/70 mb-2">{t.hero.slider.preview}</p>
-                    <h3 className="text-[#142133] text-lg leading-tight font-semibold">
-                      {t.hero.slider.title}
-                    </h3>
-                    <p className="text-xs text-[#142133]/80 mt-2">
-                      {t.hero.slider.desc}
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[0]}</div>
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[1]}</div>
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[2]}</div>
-                    <div className="rounded-lg bg-[#142133] text-white text-xs p-2 text-center">{t.hero.slider.tags[3]}</div>
-                  </div>
-                </div>
+              <div className="w-1/2 h-full">
+                <div
+                  className="h-full w-full"
+                  style={{
+                    backgroundImage: `url("${HERO_FIRST_SLIDE_BG}")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                  role="img"
+                  aria-label={t.hero.slider.title}
+                />
               </div>
 
-              <div className="w-1/2 h-full p-2 bg-[#e7ebf0]">
-                <img
-                  src="/hero-slide-2-comparativa.png"
-                  alt="Comparativa entre agencias tradicionales y GZ Agency"
-                  className="w-full h-full object-cover rounded-xl border border-[#8ea9c8]"
+              <div className="w-1/2 h-full">
+                <video
+                  src={HERO_FIRST_SLIDE_VIDEO}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                  aria-label="Video carrusel de GZ Agency"
                 />
               </div>
             </div>
