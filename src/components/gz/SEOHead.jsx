@@ -93,7 +93,7 @@ export default function SEOHead() {
       name: 'Gz Agency',
       url: canonicalUrl,
       logo: ogImage,
-      email: 'hello@gz.agency',
+      email: 'gz.agencys@gmail.com',
       description: seo.description,
       serviceType: 'Video Marketing Agency',
       areaServed: 'Worldwide',

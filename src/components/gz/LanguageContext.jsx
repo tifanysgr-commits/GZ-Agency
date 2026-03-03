@@ -7,7 +7,7 @@ const translations = {
   es: {
     topbar: {
       phone: '+34 643 091 948',
-      email: 'hello@gz.agency',
+      email: 'gz.agencys@gmail.com',
       hours: 'Lun - Vie: 00:00 - 24:00',
       portfolio: 'Portfolio',
       about: 'Sobre nosotros',
@@ -248,7 +248,7 @@ const translations = {
   en: {
     topbar: {
       phone: '+34 643 091 948',
-      email: 'hello@gz.agency',
+      email: 'gz.agencys@gmail.com',
       hours: 'Mon - Sun: 00:00 - 24:00',
       portfolio: 'Portfolio',
       about: 'About us',

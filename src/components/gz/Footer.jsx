@@ -42,12 +42,12 @@ export default function Footer() {
           {/* Contact */}
           <div className="flex flex-col items-center lg:items-end gap-2">
             <a
-              href="mailto:hello@gz.agency"
+              href="mailto:gz.agencys@gmail.com"
               className="flex items-center gap-2 text-sm transition-colors"
               style={{ color: '#97D3CD' }}
             >
               <Mail className="w-4 h-4" />
-              hello@gz.agency
+              gz.agencys@gmail.com
             </a>
           </div>
         </div>

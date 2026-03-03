@@ -352,7 +352,7 @@ function PackageCard({ pkg, index, lang, t }) {
           </div>
           <div className="flex gap-2">
             <a
-              href={`mailto:hello@gz.agency?subject=${encodeURIComponent(title)}`}
+              href={`mailto:gz.agencys@gmail.com?subject=${encodeURIComponent(title)}`}
               className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-full font-semibold text-[1rem] sm:text-[1.1rem] transition-all active:scale-[0.97]"
               style={{ backgroundColor: '#0f2e44', color: '#f4f4f2', transition: 'all 0.3s ease' }}
             >

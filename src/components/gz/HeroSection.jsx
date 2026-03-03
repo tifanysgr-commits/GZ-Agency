@@ -112,8 +112,8 @@ export default function HeroSection() {
                 >
                   <span className="flex items-center pl-5 pr-4 text-xs font-medium shrink-0">{t.hero.cta}</span>
                   <span
-                    className="flex items-center justify-center rounded-full shrink-0 m-0.5"
-                    style={{ backgroundColor: '#142133', width: '32px', height: '32px' }}
+                    className="flex items-center justify-center rounded-full shrink-0 m-1"
+                    style={{ backgroundColor: '#142133', width: '36px', height: '36px' }}
                   >
                     <ArrowRight className="w-3 h-3 text-white" />
                   </span>

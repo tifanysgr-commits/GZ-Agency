@@ -85,10 +85,10 @@ export default function NavBar() {
               }}
             >
               <span
-                className="absolute top-1 left-1 w-[42px] h-8 rounded-full transition-transform duration-300 ease-out"
+                className="absolute inset-y-1 left-1 w-[42px] rounded-full transition-transform duration-300 ease-out"
                 style={{
                   backgroundColor: '#1C2D43',
-                  transform: lang === 'es' ? 'translateX(0) translateY(-2px)' : 'translateX(46px) translateY(-2px)',
+                  transform: lang === 'es' ? 'translateX(0)' : 'translateX(42px)',
                 }}
               />
               <span className="relative z-10 w-1/2 flex justify-center text-xs font-semibold" style={{ color: lang === 'es' ? 'white' : '#808080' }}>
@@ -158,10 +158,10 @@ export default function NavBar() {
                 style={{ backgroundColor: '#e0e0e0', border: '1px solid #c4c4c4' }}
               >
                 <span
-                  className="absolute top-1 left-1 w-[42px] h-8 rounded-full transition-transform duration-300"
+                  className="absolute inset-y-1 left-1 w-[42px] rounded-full transition-transform duration-300"
                   style={{
                     backgroundColor: '#1C2D43',
-                    transform: lang === 'es' ? 'translateX(0) translateY(-2px)' : 'translateX(46px) translateY(-2px)',
+                    transform: lang === 'es' ? 'translateX(0)' : 'translateX(42px)',
                   }}
                 />
                 <span className="relative z-10 w-1/2 flex justify-center text-xs font-semibold" style={{ color: lang === 'es' ? 'white' : '#808080' }}>ES</span>
