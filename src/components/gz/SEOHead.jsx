@@ -9,8 +9,8 @@ const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
 
 const seoData = {
   es: {
-    title: 'Gz Agency — Anuncios en Video para SaaS y Marcas Digitales',
-    description: 'Creamos campañas de video de calidad profesional a precios asequibles para startups SaaS y negocios digitales. Anuncios orientados a resultados que convierten.',
+    title: 'Gz Agency — Anuncios en Video para SaaS y Marcas Digitales, desarrollo de infraestructura web de alta conversión',
+    description: 'Creamos campañas de video de calidad profesional a precios asequibles para startups SaaS y negocios digitales. Anuncios orientados a resultados que convierten. Desarrollo de infraestructura web de alta conversión.',
     keywords: 'agencia de video marketing, anuncios de video SaaS, video marketing digital, publicidad en video, anuncios para redes sociales, producción de video profesional',
     ogTitle: 'Gz Agency — Video Marketing que Convierte',
     ogDescription: 'Anuncios en video de alta calidad para SaaS y marcas innovadoras. Precios asequibles, resultados reales.',
@@ -79,25 +79,38 @@ export default function SEOHead() {
     }
     canonical.setAttribute('href', canonicalUrl);
 
-    // Structured Data (JSON-LD)
+    // Structured Data (JSON-LD) — ConsultingBusiness
     let jsonLd = document.querySelector('#gz-jsonld');
     if (!jsonLd) {
       jsonLd = document.createElement('script');
       jsonLd.id = 'gz-jsonld';
-      jsonLd.type = 'application/ld+json';
+      jsonLd.setAttribute('type', 'application/ld+json');
       document.head.appendChild(jsonLd);
     }
     jsonLd.textContent = JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'ProfessionalService',
+      '@type': 'ConsultingBusiness',
       name: 'Gz Agency',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Madrid',
+        addressRegion: 'Madrid',
+        addressCountry: 'ES',
+      },
       url: canonicalUrl,
-      logo: ogImage,
+      telephone: '+34 643 091 948',
       email: 'gz.agencys@gmail.com',
+      priceRange: '$$',
+      image: ogImage,
       description: seo.description,
-      serviceType: 'Video Marketing Agency',
-      areaServed: 'Worldwide',
-      sameAs: [],
+      areaServed: [
+        { '@type': 'City', name: 'Madrid' },
+        { '@type': 'City', name: 'Barcelona' },
+      ],
+      offers: {
+        '@type': 'Offer',
+        description: 'Auditoría de presencia digital y desarrollo de infraestructura web de alta conversión. Producción de video marketing para SaaS y marcas digitales.',
+      },
     });
   }, [lang]);
 
@@ -125,8 +138,9 @@ export default function SEOHead() {
     document.head.appendChild(script2);
 
     // Expose gtag globally for event tracking
-    window.gzTrack = (eventName, params = {}) => {
-      if (window.gtag) window.gtag('event', eventName, params);
+    const w = /** @type {{ gtag?: (...args: unknown[]) => void; gzTrack?: (eventName: string, params?: object) => void }} */ (window);
+    w.gzTrack = (eventName, params = {}) => {
+      if (w.gtag) w.gtag('event', eventName, params);
     };
   }, []);
 
