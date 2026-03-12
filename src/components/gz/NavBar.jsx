@@ -77,6 +77,7 @@ export default function NavBar() {
             {/* Language Switcher — pill, gris claro, ES activo = azul navy */}
             <button
               type="button"
+              aria-label={lang === 'es' ? t.nav.ariaLangToEn : t.nav.ariaLangToEs}
               onClick={() => switchLang(lang === 'es' ? 'en' : 'es')}
               className="flex relative items-center rounded-full cursor-pointer select-none w-[92px] h-10 p-1 outline-none focus:outline-none"
               style={{
@@ -100,6 +101,7 @@ export default function NavBar() {
             </button>
 
             <button
+              aria-label={mobileOpen ? t.nav.ariaMenuClose : t.nav.ariaMenuOpen}
               onClick={() => setMobileOpen(!mobileOpen)}
               className="md:hidden p-2.5 rounded-xl transition-colors"
               style={{ color: '#1C2D43' }}
@@ -153,6 +155,7 @@ export default function NavBar() {
               </a>
               <button
                 type="button"
+                aria-label={lang === 'es' ? t.nav.ariaLangToEn : t.nav.ariaLangToEs}
                 onClick={() => switchLang(lang === 'es' ? 'en' : 'es')}
                 className="flex relative items-center rounded-full w-[92px] h-10 p-1 cursor-pointer select-none"
                 style={{ backgroundColor: '#e0e0e0', border: '1px solid #c4c4c4' }}

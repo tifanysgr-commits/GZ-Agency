@@ -40,7 +40,7 @@ export default function FemmeforceCaseSection() {
         {/* ——— Femmeforce ——— */}
         <div>
           <div className="w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden mb-10 sm:mb-12">
-            <img src="/images/femmeforce-hero.png" alt="Femmeforce - Gimnasio femenino" className="w-full h-full object-cover" />
+            <img src="/images/femmeforce-hero.png" alt="Femmeforce - Gimnasio femenino" className="w-full h-full object-cover" loading="lazy" decoding="async" />
           </div>
           <h2 className="text-[1.75rem] sm:text-[2.25rem] font-bold text-[#111827] leading-tight mb-6 text-center" style={{ fontFamily: '"Figtree", sans-serif' }}>
             {t.femmeforce.title}
@@ -56,10 +56,10 @@ export default function FemmeforceCaseSection() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
             <div className="aspect-square sm:aspect-[4/3] overflow-hidden">
-              <img src="/images/femmeforce-gym.jpg" alt="Entrenamiento en Femmeforce" className="w-full h-full object-cover" />
+              <img src="/images/femmeforce-gym.jpg" alt="Entrenamiento en Femmeforce" className="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
             <div className="aspect-square sm:aspect-[4/3] overflow-hidden">
-              <img src="/images/femmeforce-ropes.png" alt="Battle ropes en Femmeforce" className="w-full h-full object-cover" />
+              <img src="/images/femmeforce-ropes.png" alt="Battle ropes en Femmeforce" className="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function FemmeforceCaseSection() {
         {/* ——— Arie Keijzer ——— */}
         <div id="ariekeijzer">
           <div className="w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden mb-10 sm:mb-12">
-            <img src="/images/ariekeijzer-hero.png" alt="Arie Keijzer - Tienda de pianos" className="w-full h-full object-cover" />
+            <img src="/images/ariekeijzer-hero.png" alt="Arie Keijzer - Tienda de pianos" className="w-full h-full object-cover" loading="lazy" decoding="async" />
           </div>
           <h2 className="text-[1.75rem] sm:text-[2.25rem] font-bold text-[#111827] leading-tight mb-6 text-center" style={{ fontFamily: '"Figtree", sans-serif' }}>
             {t.ariekeijzer.title}
@@ -83,10 +83,10 @@ export default function FemmeforceCaseSection() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
             <div className="aspect-square sm:aspect-[4/3] overflow-hidden">
-              <img src="/images/ariekeijzer-pianos.png" alt="Pianos Steinway y Yamaha - Arie Keijzer" className="w-full h-full object-cover" />
+              <img src="/images/ariekeijzer-pianos.png" alt="Pianos Steinway y Yamaha - Arie Keijzer" className="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
             <div className="aspect-square sm:aspect-[4/3] overflow-hidden">
-              <img src="/images/ariekeijzer-workshop.png" alt="Taller de afinación - Arie Keijzer" className="w-full h-full object-cover" />
+              <img src="/images/ariekeijzer-workshop.png" alt="Taller de afinación - Arie Keijzer" className="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>

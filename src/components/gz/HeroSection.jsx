@@ -86,6 +86,8 @@ export default function HeroSection() {
             <div className="mb-2">
               <img
                 src="/rating-stars.png"
+                loading="eager"
+                fetchPriority="high"
                 alt={t.hero.rating}
                 className="h-8 w-auto object-contain object-left"
                 style={{ mixBlendMode: 'lighten' }}

@@ -23,6 +23,10 @@ const translations = {
       metodo: 'Método',
       contacto: 'Contacto',
       cta: 'Programar una conversación',
+      ariaMenuOpen: 'Abrir menú',
+      ariaMenuClose: 'Cerrar menú',
+      ariaLangToEn: 'Cambiar a inglés',
+      ariaLangToEs: 'Cambiar a español',
     },
     hero: {
       eyebrow: 'Publicidad profesional para nuevas webs y apps. Calidad alta. Precio inteligente.',
@@ -309,6 +313,10 @@ const translations = {
       metodo: 'Method',
       contacto: 'Contact',
       cta: 'Schedule a conversation',
+      ariaMenuOpen: 'Open menu',
+      ariaMenuClose: 'Close menu',
+      ariaLangToEn: 'Switch to English',
+      ariaLangToEs: 'Switch to Spanish',
     },
     hero: {
       eyebrow: 'Professional advertising for new apps and webs. High quality. Smart pricing.',

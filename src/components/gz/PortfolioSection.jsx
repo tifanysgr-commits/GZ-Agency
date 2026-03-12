@@ -281,6 +281,8 @@ function PackageCard({ pkg, index, lang, t }) {
             <img
               src={pkg.coverImage}
               alt={title}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
               style={{
                 transition: 'transform 0.4s ease, filter 0.4s ease',
