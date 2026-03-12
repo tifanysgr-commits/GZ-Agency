@@ -6,8 +6,9 @@ export default function InsightsSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="insights" className="py-20 sm:py-24 bg-white">
-      <div className="gz-mobile-shell max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="h-0 overflow-hidden" aria-hidden="true">
+      <section id="insights" className="py-20 sm:py-24 bg-white">
+        <div className="gz-mobile-shell max-w-[720px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 text-[#213743] mb-4">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#12323f]" />
@@ -37,7 +38,8 @@ export default function InsightsSection() {
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }

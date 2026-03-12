@@ -177,7 +177,7 @@ export default function HeroSection() {
                   </span>
                 </a>
                 <a
-                  href="#femmeforce"
+                  href={isAlt ? '#femmeforce' : '#portfolio'}
                   className="group inline-flex items-center py-2 sm:py-0 text-white font-medium transition-colors hover:opacity-90 whitespace-nowrap"
                 >
                   {t.hero.secondary}
