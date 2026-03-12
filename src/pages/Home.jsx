@@ -4,6 +4,8 @@ import NavBar from '../components/gz/NavBar';
 import HeroSection from '../components/gz/HeroSection';
 import ComparisonSection from '../components/gz/ComparisonSection';
 import PortfolioSection from '../components/gz/PortfolioSection';
+import FemmeforceCaseSection from '../components/gz/FemmeforceCaseSection';
+import InsightsSection from '../components/gz/InsightsSection';
 import PricingSection from '../components/gz/PricingSection';
 import Footer from '../components/gz/Footer';
 import SEOHead from '../components/gz/SEOHead';
@@ -21,6 +23,8 @@ export default function Home() {
         </div>
         <ComparisonSection />
         <PortfolioSection />
+        <FemmeforceCaseSection />
+        <InsightsSection />
         <PricingSection />
         <Footer />
       </div>

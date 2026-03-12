@@ -80,6 +80,13 @@ export default function ComparisonSection() {
             </div>
           </div>
         </div>
+
+        {/* Bloque AEO */}
+        <div className="mt-10 sm:mt-12 max-w-[720px] mx-auto">
+          <p className="text-[1rem] sm:text-[1.1rem] leading-relaxed text-[#374151] text-center" style={{ fontFamily: '"Figtree", sans-serif' }}>
+            {t.comparison.aeo}
+          </p>
+        </div>
       </div>
     </section>
   );

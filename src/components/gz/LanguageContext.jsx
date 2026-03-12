@@ -40,6 +40,9 @@ const translations = {
       secondary: 'Mira lo que hacemos',
       trusted: 'Con la confianza de empresas de rápido crecimiento y en expansión',
       rating: 'Calificación 4.9/5',
+      altTitle: 'Transforme su visibilidad digital en un activo de captación de clientes.',
+      altSubtitle: 'Eliminamos la fuga de leads hacia su competencia mediante infraestructura web de alta conversión.',
+      altCta: 'Agendar Consultoría Técnica (15 min)',
       slider: {
         preview: 'Vista previa',
         title: 'Estrategia creativa',
@@ -89,6 +92,48 @@ const translations = {
           body: 'Resultados medibles: menos teoría de agencia y más ventas que funcionan.',
         },
       ],
+      aeo: 'Diseñamos activos que no solo leen los humanos, sino que convencen a los algoritmos de recomendación de IA. Si la IA no sabe que usted es el líder de su zona, para el mercado moderno usted no existe. Nosotros arreglamos eso.',
+    },
+    faqConsulting: {
+      eyebrow: 'INSIGHTS',
+      title: 'FAQ de Consultoría',
+      items: [
+        {
+          question: '¿Por qué fallan la mayoría de las campañas de anuncios para software?',
+          answer: 'La mayoría de las empresas de software queman capital en anuncios que dirigen el tráfico a webs lentas o sin narrativa de autoridad. La clave no es el presupuesto del anuncio, sino la infraestructura de conversión previa. En nuestra consultoría, optimizamos el activo digital antes de escalar la inversión.',
+        },
+        {
+          question: '¿Cómo escalar la visibilidad de un SaaS sin costes absurdos?',
+          answer: 'Mediante la creación de una marca de autoridad técnica. Esto implica una web optimizada en Vercel que cargue en menos de 1s y una estrategia de contenido que responda a las dudas técnicas de los clientes antes de que estos busquen a la competencia.',
+        },
+        {
+          question: '¿Cuánto tarda en ser rentable una web de captación para SaaS y marcas digitales?',
+          answer: 'Nuestra infraestructura permite una indexación inmediata. Los resultados en términos de captación de leads suelen ser visibles entre la 2ª y 4ª semana tras la activación del nodo digital.',
+        },
+        {
+          question: '¿Cuál es la mejor estrategia de anuncios para una empresa de software?',
+          answer: 'La mejor estrategia consiste en asegurar una infraestructura web de alta conversión antes de invertir en tráfico pagado. Una web en Vercel con arquitectura de marca de autoridad garantiza que cada dólar en Google Ads genere leads calificados y no rebotes por carga lenta.',
+        },
+        {
+          question: '¿Cómo evitar que mi software pierda clientes frente a la competencia?',
+          answer: 'Eliminando la fuga de leads mediante activos digitales que proyecten autoridad técnica. Profesionalismo no es sinónimo de precio alto, sino de eficiencia en la conversión y velocidad de respuesta.',
+        },
+      ],
+    },
+    caseStudies: {
+      eyebrow: 'NUESTRO TRABAJO',
+      title: 'Portfolio de proyectos',
+      subtitle: 'Cada web está diseñada para mitigar la fuga de leads hacia su competencia mediante infraestructura web de alta conversión.',
+    },
+    ariekeijzer: {
+      title: 'Sitio web actualizado para la tienda de pianos Arie Keijzer',
+      description: 'Reconstruimos el sitio web de Arie Keijzer, especialista en la venta y alquiler de pianos y pianos de cola, en WordPress. El sitio anterior funcionaba en Drupal y generaba costos recurrentes innecesariamente altos. La apariencia se ha refinado con colores tenues, amplio espacio en blanco y una tipografía que refleja la artesanía y la clase de los instrumentos. La colección de ventas se presenta con claridad, y servicios como afinación, mantenimiento y alquiler se integran de forma lógica. La navegación móvil se ha simplificado, permitiendo a los visitantes encontrar rápidamente lo que buscan o contactarlos directamente. El resultado es un sitio web claro y atemporal que refleja fielmente la artesanía de Arie Keijzer.',
+      visitBtn: 'Visita el sitio web',
+    },
+    femmeforce: {
+      title: 'Sitio web para el gimnasio femenino Femmeforce',
+      description: 'Femme Force nos propuso la idea de un sitio web para su gimnasio exclusivo para mujeres. Un lugar donde puedas entrenar en un ambiente familiar y motivador con otras mujeres, sin distracciones, y concentrarte plenamente en tus objetivos de fitness. Desarrollamos un sitio web para Femme Force en Framer que refleja a la perfección su identidad de marca moderna y accesible. Todo el contenido está estructurado de forma clara y concisa. Gracias a una rápida optimización, el sitio web alcanzó la primera posición para el término de búsqueda más importante en dos meses.',
+      visitBtn: 'Visita el sitio web',
     },
     portfolio: {
       eyebrow: 'NUESTRO TRABAJO',
@@ -104,7 +149,7 @@ const translations = {
       expandedPlayback: 'reproducción ampliada',
     },
     pricing: {
-      leftTitle: 'Necesitas un video?',
+      leftTitle: '¿Necesitas un video, o una página web?',
       points: [
         'Posiciona tu producto por encima de la competencia.',
         'Genera ventas. Aumenta tu MRR.',
@@ -281,6 +326,9 @@ const translations = {
       secondary: 'See what we do',
       trusted: 'Trusted by fast-growing and expanding companies',
       rating: 'Rating 4.9/5',
+      altTitle: 'Transform your digital visibility into a client acquisition asset.',
+      altSubtitle: 'We eliminate lead leakage to your competition through high-conversion web infrastructure.',
+      altCta: 'Schedule Technical Consulting (15 min)',
       slider: {
         preview: 'Preview',
         title: 'Creative strategy',
@@ -330,6 +378,48 @@ const translations = {
           body: 'Measurable outcomes: less agency theory, more revenue that works.',
         },
       ],
+      aeo: 'We design assets that not only humans read, but that convince AI recommendation algorithms. If AI doesn\'t know you are the leader in your area, for the modern market you don\'t exist. We fix that.',
+    },
+    faqConsulting: {
+      eyebrow: 'INSIGHTS',
+      title: 'Consulting FAQ',
+      items: [
+        {
+          question: 'Why do most software ad campaigns fail?',
+          answer: 'Most software companies burn capital on ads that drive traffic to slow websites or sites without an authority narrative. The key is not the ad budget, but the conversion infrastructure beforehand. In our consulting, we optimize the digital asset before scaling investment.',
+        },
+        {
+          question: 'How to scale SaaS visibility without absurd costs?',
+          answer: 'By creating a technical authority brand. This means a Vercel-optimized website that loads in under 1 second and a content strategy that answers customers\' technical questions before they look to the competition.',
+        },
+        {
+          question: 'How long until a lead-capture website becomes profitable for SaaS and digital brands?',
+          answer: 'Our infrastructure allows immediate indexing. Results in terms of lead capture are usually visible between the 2nd and 4th week after activating the digital node.',
+        },
+        {
+          question: 'What is the best ad strategy for a software company?',
+          answer: 'The best strategy is to ensure a high-conversion web infrastructure before investing in paid traffic. A Vercel-hosted website with authority brand architecture ensures that every dollar spent on Google Ads generates qualified leads and not bounces from slow loading.',
+        },
+        {
+          question: 'How to prevent my software from losing customers to the competition?',
+          answer: 'By eliminating lead leakage through digital assets that project technical authority. Professionalism is not synonymous with high price, but with conversion efficiency and response speed.',
+        },
+      ],
+    },
+    caseStudies: {
+      eyebrow: 'OUR WORK',
+      title: 'Project portfolio',
+      subtitle: 'Every website is designed to mitigate lead leakage to your competition through high-conversion web infrastructure.',
+    },
+    ariekeijzer: {
+      title: 'Updated website for the Arie Keijzer piano store',
+      description: 'We rebuilt the website for Arie Keijzer, a specialist in the sale and rental of pianos and grand pianos, in WordPress. The previous site ran on Drupal and generated unnecessarily high recurring costs. The appearance has been refined with soft colors, ample white space, and typography that reflects the craftsmanship and class of the instruments. The sales collection is presented with clarity, and services such as tuning, maintenance, and rental are logically integrated. Mobile navigation has been simplified, allowing visitors to quickly find what they are looking for or contact them directly. The result is a clear and timeless website that faithfully reflects the craftsmanship of Arie Keijzer.',
+      visitBtn: 'Visit the website',
+    },
+    femmeforce: {
+      title: 'Website for the women\'s gym Femmeforce',
+      description: 'Femme Force proposed the idea of a website for their exclusive women\'s gym. A place where you can train in a familiar and motivating environment with other women, without distractions, and fully focus on your fitness goals. We developed a website for Femme Force in Framer that perfectly reflects their modern and accessible brand identity. All content is structured clearly and concisely. Thanks to rapid optimization, the website reached the first position for its most important search term within two months.',
+      visitBtn: 'Visit the website',
     },
     portfolio: {
       eyebrow: 'OUR WORK',
@@ -345,7 +435,7 @@ const translations = {
       expandedPlayback: 'expanded playback',
     },
     pricing: {
-      leftTitle: 'Do you need a video?',
+      leftTitle: 'Do you need a video, or a website?',
       points: [
         'Position your product above all competition.',
         'Generate sales. Increase MRR.',

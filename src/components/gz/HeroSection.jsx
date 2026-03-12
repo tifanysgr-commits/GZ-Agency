@@ -37,17 +37,30 @@ function LogoItem({ item }) {
   );
 }
 
+const HERO_VARIANT_A = { bg: '#142133', panelBg: '#e0e0e0', panelBorder: '#142133', ctaBg: 'white', ctaColor: '#262626', circleBg: '#142133', circleIcon: 'white', panelRadius: '16px', panelCurve: false };
+const HERO_VARIANT_B = { bg: '#102025', panelBg: '#F5F7F8', panelBorder: '#102025', ctaBg: '#102025', ctaColor: 'white', circleBg: 'white', circleIcon: '#102025', panelRadius: '16px', panelCurve: true };
+
 export default function HeroSection() {
   const { t } = useLanguage();
   const [activeHeroSlide, setActiveHeroSlide] = React.useState(0);
+  const [activeVariant, setActiveVariant] = React.useState(0);
 
   React.useEffect(() => {
-    const intervalId = window.setInterval(() => {
+    const slideInterval = window.setInterval(() => {
       setActiveHeroSlide((prev) => (prev + 1) % 2);
     }, 5000);
-
-    return () => window.clearInterval(intervalId);
+    return () => window.clearInterval(slideInterval);
   }, []);
+
+  React.useEffect(() => {
+    const variantInterval = window.setInterval(() => {
+      setActiveVariant((prev) => (prev + 1) % 2);
+    }, 3500);
+    return () => window.clearInterval(variantInterval);
+  }, []);
+
+  const v = activeVariant === 0 ? HERO_VARIANT_A : HERO_VARIANT_B;
+  const isAlt = activeVariant === 1;
 
   return (
     <section
@@ -56,14 +69,15 @@ export default function HeroSection() {
       style={{ zIndex: 2 }}
     >
       <div className="gz-mobile-shell mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-28 lg:pb-28" style={{ maxWidth: '960px', width: '100%' }}>
-        {/* Bloque principal — #142133, ancho fijo menor */}
+        {/* Bloque principal — alterna entre #142133 y #102025 */}
         <div
           className="relative flex flex-col lg:flex-row overflow-hidden w-full"
           style={{
-            backgroundColor: '#142133',
+            backgroundColor: v.bg,
             borderRadius: '24px',
             minHeight: '360px',
             width: '100%',
+            transition: 'background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         >
           {/* Contenido izquierdo */}
@@ -78,39 +92,83 @@ export default function HeroSection() {
               />
             </div>
 
-            {/* Headline — primera línea grande, segunda línea 2x menor, salto después del "-" */}
-            <h1 className="font-light leading-tight text-white mb-6" style={{ fontFamily: '"Crimson Text", serif', fontWeight: 300, letterSpacing: '-0.03em' }}>
-              <span style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
-                {t.hero.titleBefore}
-                {t.hero.titleBold && <strong>{t.hero.titleBold}</strong>}
-              </span>
-              <br />
-              <span style={{ fontSize: 'clamp(1rem, 3vw, 1.75rem)' }}>
-                {t.hero.titleAfter}
-              </span>
-            </h1>
+            {/* Headline — crossfade elegante, grid para que el contenedor se ajuste al texto */}
+            <div className="grid mb-6" style={{ gridTemplateColumns: '1fr', gridTemplateRows: 'min-content' }}>
+              <h1
+                className="font-light leading-tight text-white col-start-1 row-start-1 min-w-0"
+                style={{
+                  fontFamily: '"Crimson Text", serif',
+                  fontWeight: 300,
+                  letterSpacing: '-0.03em',
+                  opacity: isAlt ? 0 : 1,
+                  pointerEvents: isAlt ? 'none' : 'auto',
+                  transition: 'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              >
+                <span style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
+                  {t.hero.titleBefore}
+                  {t.hero.titleBold && <strong>{t.hero.titleBold}</strong>}
+                </span>
+                <br />
+                <span style={{ fontSize: 'clamp(1rem, 3vw, 1.75rem)' }}>{t.hero.titleAfter}</span>
+              </h1>
+              <h1
+                className="font-light leading-tight text-white col-start-1 row-start-1 min-w-0"
+                style={{
+                  fontFamily: '"Crimson Text", serif',
+                  fontWeight: 300,
+                  letterSpacing: '-0.03em',
+                  opacity: isAlt ? 1 : 0,
+                  pointerEvents: isAlt ? 'auto' : 'none',
+                  transition: 'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              >
+                <span style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>{t.hero.altTitle}</span>
+              </h1>
+            </div>
 
-            {/* Subheadline */}
-            <p className="text-[0.98rem] sm:text-lg text-white/90 mb-8 sm:mb-10 max-w-xl">
-              {t.hero.subtitleBefore}
-              {t.hero.subtitleBold && <strong>{t.hero.subtitleBold}</strong>}
-              <br />
-              {t.hero.subtitleAfter}
-            </p>
+            {/* Subheadline — crossfade elegante, grid para ajuste natural */}
+            <div className="grid mb-8 sm:mb-10 max-w-xl" style={{ gridTemplateColumns: '1fr', gridTemplateRows: 'min-content' }}>
+              <p
+                className="text-[0.98rem] sm:text-lg text-white/90 col-start-1 row-start-1 min-w-0"
+                style={{
+                  opacity: isAlt ? 0 : 1,
+                  pointerEvents: isAlt ? 'none' : 'auto',
+                  transition: 'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              >
+                {t.hero.subtitleBefore}
+                {t.hero.subtitleBold && <strong>{t.hero.subtitleBold}</strong>}
+                <br />
+                {t.hero.subtitleAfter}
+              </p>
+              <p
+                className="text-[0.98rem] sm:text-lg text-white/90 col-start-1 row-start-1 min-w-0"
+                style={{
+                  opacity: isAlt ? 1 : 0,
+                  pointerEvents: isAlt ? 'auto' : 'none',
+                  transition: 'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              >
+                {t.hero.altSubtitle}
+              </p>
+            </div>
 
-            {/* CTAs — pill blanco + Mira lo que hacemos juntos */}
+            {/* CTAs — botón siempre con estética primera (blanco + círculo azul), solo cambia el texto */}
             <div className="flex flex-col gap-1">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
                 <a
                   href="/book"
-                  className="group inline-flex w-fit min-h-[44px] shrink-0 items-stretch rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
+                  className="group inline-flex w-fit min-h-[44px] shrink-0 items-center rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
                   style={{
                     backgroundColor: 'white',
                     color: '#262626',
                     height: '44px',
                   }}
                 >
-                  <span className="flex items-center pl-5 pr-4 text-xs font-medium shrink-0">{t.hero.cta}</span>
+                  <span className="flex items-center pl-5 pr-4 text-xs font-medium shrink-0">
+                    {isAlt ? t.hero.altCta : t.hero.cta}
+                  </span>
                   <span
                     className="flex items-center justify-center rounded-full shrink-0 m-1"
                     style={{ backgroundColor: '#142133', width: '36px', height: '36px' }}
@@ -119,7 +177,7 @@ export default function HeroSection() {
                   </span>
                 </a>
                 <a
-                  href="#portfolio"
+                  href="#femmeforce"
                   className="group inline-flex items-center py-2 sm:py-0 text-white font-medium transition-colors hover:opacity-90 whitespace-nowrap"
                 >
                   {t.hero.secondary}
@@ -128,13 +186,14 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Slider derecha — 2 diapositivas */}
+          {/* Slider derecha — 2 diapositivas, estética según variante */}
           <div
             className="hidden lg:block w-full lg:w-[32%] min-h-[280px] shrink-0 m-4 mr-6 relative overflow-hidden"
             style={{
-              backgroundColor: '#e0e0e0',
-              border: '1px solid #142133',
-              borderRadius: '16px',
+              backgroundColor: v.panelBg,
+              border: `1px solid ${v.panelBorder}`,
+              borderRadius: v.panelCurve ? '24px 0 0 24px' : '16px',
+              transition: 'background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), border-radius 1s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
             <div
@@ -175,7 +234,12 @@ export default function HeroSection() {
                   type="button"
                   aria-label={`Ir a diapositiva ${dot + 1}`}
                   onClick={() => setActiveHeroSlide(dot)}
-                  className={`h-2 rounded-full transition-all ${activeHeroSlide === dot ? 'w-6 bg-[#142133]' : 'w-2 bg-[#142133]/40'}`}
+                  className="h-2 rounded-full"
+                  style={{
+                    width: activeHeroSlide === dot ? 24 : 8,
+                    backgroundColor: activeHeroSlide === dot ? v.panelBorder : `${v.panelBorder}66`,
+                    transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                  }}
                 />
               ))}
             </div>
