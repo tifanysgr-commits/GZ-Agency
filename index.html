@@ -12,27 +12,26 @@
     <script id="gz-jsonld" type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ConsultingBusiness",
+      "@type": "LocalBusiness",
       "name": "Gz Agency",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Madrid",
-        "addressRegion": "Madrid",
-        "addressCountry": "ES"
-      },
+      "image": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ad01ace6c66924ebbe714/d1ed0ee5c_logoGZ.png",
+      "@id": "https://gz.agency",
       "url": "https://gz.agency",
       "telephone": "+34 643 091 948",
       "email": "gz.agencys@gmail.com",
-      "priceRange": "$$",
-      "image": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699ad01ace6c66924ebbe714/d1ed0ee5c_logoGZ.png",
-      "description": "Creamos campañas de video de calidad profesional a precios asequibles para startups SaaS y negocios digitales. Anuncios orientados a resultados que convierten. Desarrollo de infraestructura web de alta conversión.",
-      "areaServed": [
-        { "@type": "City", "name": "Madrid" },
-        { "@type": "City", "name": "Barcelona" }
-      ],
-      "offers": {
-        "@type": "Offer",
-        "description": "Auditoría de presencia digital y desarrollo de infraestructura web de alta conversión. Producción de video marketing para SaaS y marcas digitales."
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Madrid",
+        "addressLocality": "Madrid",
+        "addressRegion": "Madrid",
+        "postalCode": "28001",
+        "addressCountry": "ES"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
       }
     }
     </script>

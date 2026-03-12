@@ -79,7 +79,7 @@ export default function SEOHead() {
     }
     canonical.setAttribute('href', canonicalUrl);
 
-    // Structured Data (JSON-LD) — ConsultingBusiness
+    // Structured Data (JSON-LD) — LocalBusiness (mejor soporte en Google)
     let jsonLd = document.querySelector('#gz-jsonld');
     if (!jsonLd) {
       jsonLd = document.createElement('script');
@@ -89,27 +89,26 @@ export default function SEOHead() {
     }
     jsonLd.textContent = JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'ConsultingBusiness',
+      '@type': 'LocalBusiness',
       name: 'Gz Agency',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Madrid',
-        addressRegion: 'Madrid',
-        addressCountry: 'ES',
-      },
+      image: ogImage,
+      '@id': canonicalUrl,
       url: canonicalUrl,
       telephone: '+34 643 091 948',
       email: 'gz.agencys@gmail.com',
-      priceRange: '$$',
-      image: ogImage,
-      description: seo.description,
-      areaServed: [
-        { '@type': 'City', name: 'Madrid' },
-        { '@type': 'City', name: 'Barcelona' },
-      ],
-      offers: {
-        '@type': 'Offer',
-        description: 'Auditoría de presencia digital y desarrollo de infraestructura web de alta conversión. Producción de video marketing para SaaS y marcas digitales.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Madrid',
+        addressLocality: 'Madrid',
+        addressRegion: 'Madrid',
+        postalCode: '28001',
+        addressCountry: 'ES',
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
       },
     });
   }, [lang]);
