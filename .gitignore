@@ -1,6 +1,9 @@
 #env
 .env
 .env.*
+.venv
+.venv/
+respuestas.xlsx
 
 # Logs
 logs
