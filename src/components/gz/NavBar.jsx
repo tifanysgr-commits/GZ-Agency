@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import ScheduleConversationModal from './ScheduleConversationModal';
 
 export default function NavBar() {
   const { lang, switchLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scheduleOpen, setScheduleOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -58,9 +56,8 @@ export default function NavBar() {
 
           {/* Right side — CTA + Language */}
           <div className="flex items-center gap-4">
-            <button
-              type="button"
-              onClick={() => setScheduleOpen(true)}
+            <a
+              href="/book"
               className="hidden sm:inline-flex items-stretch rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
               style={{
                 backgroundColor: '#142133',
@@ -75,7 +72,7 @@ export default function NavBar() {
               >
                 <ArrowRight className="w-3 h-3 text-[#142133]" />
               </span>
-            </button>
+            </a>
 
             {/* Language Switcher — pill, gris claro, ES activo = azul navy */}
             <button
@@ -138,12 +135,9 @@ export default function NavBar() {
               ))}
             </div>
             <div className="flex items-center gap-3 mt-4 px-4">
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileOpen(false);
-                  setScheduleOpen(true);
-                }}
+              <a
+                href="/book"
+                onClick={() => setMobileOpen(false)}
                 className="flex-1 inline-flex items-stretch rounded-[9999px] overflow-hidden"
                 style={{
                   backgroundColor: '#142133',
@@ -158,7 +152,7 @@ export default function NavBar() {
                 >
                   <ArrowRight className="w-3 h-3 text-[#142133]" />
                 </span>
-              </button>
+              </a>
               <button
                 type="button"
                 aria-label={lang === 'es' ? t.nav.ariaLangToEn : t.nav.ariaLangToEs}
@@ -180,8 +174,6 @@ export default function NavBar() {
           </div>
         )}
       </div>
-
-      <ScheduleConversationModal open={scheduleOpen} onClose={() => setScheduleOpen(false)} />
     </nav>
   );
 }
