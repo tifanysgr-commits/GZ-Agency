@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { ArrowRight } from 'lucide-react';
 
@@ -159,8 +160,8 @@ export default function HeroSection() {
             {/* CTAs — botón siempre con estética primera (blanco + círculo azul), solo cambia el texto */}
             <div className="flex flex-col gap-1">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-                <a
-                  href="/book"
+                <Link
+                  to="/book"
                   className="group inline-flex w-fit min-h-[44px] shrink-0 items-center rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
                   style={{
                     backgroundColor: 'white',
@@ -177,7 +178,7 @@ export default function HeroSection() {
                   >
                     <ArrowRight className="w-3 h-3 text-white" />
                   </span>
-                </a>
+                </Link>
                 <a
                   href={isAlt ? '#femmeforce' : '#portfolio'}
                   className="group inline-flex items-center py-2 sm:py-0 text-white font-medium transition-colors hover:opacity-90 whitespace-nowrap"

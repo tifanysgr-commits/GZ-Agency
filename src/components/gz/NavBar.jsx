@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
@@ -56,8 +57,8 @@ export default function NavBar() {
 
           {/* Right side — CTA + Language */}
           <div className="flex items-center gap-4">
-            <a
-              href="/book"
+            <Link
+              to="/book"
               className="hidden sm:inline-flex items-stretch rounded-[9999px] overflow-hidden transition-all hover:opacity-95"
               style={{
                 backgroundColor: '#142133',
@@ -72,7 +73,7 @@ export default function NavBar() {
               >
                 <ArrowRight className="w-3 h-3 text-[#142133]" />
               </span>
-            </a>
+            </Link>
 
             {/* Language Switcher — pill, gris claro, ES activo = azul navy */}
             <button
@@ -135,8 +136,8 @@ export default function NavBar() {
               ))}
             </div>
             <div className="flex items-center gap-3 mt-4 px-4">
-              <a
-                href="/book"
+              <Link
+                to="/book"
                 onClick={() => setMobileOpen(false)}
                 className="flex-1 inline-flex items-stretch rounded-[9999px] overflow-hidden"
                 style={{
@@ -152,7 +153,7 @@ export default function NavBar() {
                 >
                   <ArrowRight className="w-3 h-3 text-[#142133]" />
                 </span>
-              </a>
+              </Link>
               <button
                 type="button"
                 aria-label={lang === 'es' ? t.nav.ariaLangToEn : t.nav.ariaLangToEs}

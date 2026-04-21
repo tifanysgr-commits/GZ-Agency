@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from './LanguageContext';
 import { CheckCircle2, Star } from 'lucide-react';
 
@@ -49,13 +50,13 @@ export default function PricingSection() {
               ))}
             </ul>
 
-            <a
-              href="/book"
+            <Link
+              to="/book"
               className="inline-flex items-center justify-center min-h-[46px] px-7 rounded-xl text-sm font-semibold text-[#10192b] shadow-[0_0_28px_rgba(246,191,53,0.45)]"
               style={{ backgroundColor: '#f0c44f' }}
             >
               {t.pricing.strategyCta}
-            </a>
+            </Link>
 
             <div className="mt-8">
               <div className="flex items-center gap-1 text-[#f0c44f] mb-4">
